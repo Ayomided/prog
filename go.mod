@@ -5,6 +5,7 @@ go 1.22.5
 require (
 	github.com/a-h/templ v0.2.747
 	github.com/alecthomas/chroma/v2 v2.2.0
+	github.com/gorilla/feeds v1.2.0
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/mattn/go-sqlite3 v1.14.22
 	github.com/yuin/goldmark v1.7.4

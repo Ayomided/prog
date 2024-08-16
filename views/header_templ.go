@@ -26,7 +26,7 @@ func Header() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<header class=\"bg-[#EADFB4] w-full max-w-screen px-4 sm:px-6 py-3\"><nav class=\"flex flex-col sm:flex-row justify-between items-center\"><a href=\"/\" class=\"underline text-lg font-semibold mb-2 sm:mb-0\">Ji</a><ul class=\"flex flex-wrap justify-center sm:justify-end space-x-2 text-[#51829B] sm:space-x-4\"><li><a href=\"#articles\" class=\"hover:underline\">Blog</a></li><li><a href=\"#\" class=\"hover:underline\">GitHub</a></li><li><a href=\"#\" class=\"hover:underline\">LinkedIn</a></li><li><a href=\"#\" class=\"hover:underline\">RSS</a></li></ul></nav></header><main>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<header class=\"bg-[#EADFB4] w-full max-w-screen px-4 sm:px-6 py-3\"><nav class=\"flex flex-col sm:flex-row justify-between items-center\"><a href=\"/\" class=\"underline text-lg font-semibold mb-2 sm:mb-0\">Ji</a><ul class=\"flex flex-wrap justify-center sm:justify-end space-x-2 text-[#51829B] sm:space-x-4\"><li><a href=\"#articles\" class=\"hover:underline\">Blog</a></li><li><a href=\"#\" class=\"hover:underline\">GitHub</a></li><li><a href=\"#\" class=\"hover:underline\">LinkedIn</a></li><li><a href=\"/feed\" class=\"hover:underline\">RSS</a></li></ul></nav></header><main>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -2,13 +2,50 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
+	"net/http"
+	"time"
 
 	"github.com/Ayomided/prog.git/article"
 	"github.com/Ayomided/prog.git/sqlite"
 	"github.com/Ayomided/prog.git/views"
+	"github.com/gorilla/feeds"
 	"github.com/labstack/echo"
 	_ "github.com/mattn/go-sqlite3"
 )
+
+func RssHandler(ctx echo.Context, db *sqlite.Queries) error {
+	feed := &feeds.Feed{
+		Title:       "David Adediji | blog",
+		Link:        &feeds.Link{Href: "localhost:8080"},
+		Description: "Discussing",
+		Author:      &feeds.Author{Name: "David Adediji", Email: "idavid.adediji@gmail.com"},
+		Created:     time.Now(),
+	}
+
+	articles, err := db.QueryArticles(ctx.Request().Context())
+	if err != nil {
+		return err
+	}
+
+	var feedItems []*feeds.Item
+	for _, article := range articles {
+		feedItems = append(feedItems,
+			&feeds.Item{
+				Id:      fmt.Sprintf("tag: %v, %v:/articles/%v", "localhost", article.CreatedAt, article.Slug),
+				Title:   article.Title,
+				Link:    &feeds.Link{Href: fmt.Sprintf("localhost:8080/articles/%v", article.Slug)},
+				Created: article.CreatedAt,
+			})
+	}
+	feed.Items = feedItems
+	rss, err := feed.ToRss()
+	if err != nil {
+		return err
+	}
+	ctx.Response().Header().Set(echo.HeaderContentType, "application/rss+xml")
+	return ctx.String(http.StatusOK, rss)
+}
 
 func HomeHandler(ctx echo.Context, db *sqlite.Queries) error {
 	articles, err := db.QueryArticles(ctx.Request().Context())
@@ -43,6 +80,9 @@ func main() {
 
 	e.GET("/", func(c echo.Context) error {
 		return HomeHandler(c, db)
+	})
+	e.GET("/feed", func(c echo.Context) error {
+		return RssHandler(c, db)
 	})
 	e.GET("/articles/:slug", func(c echo.Context) error {
 		return ArticleHandler(c, db, parser)
