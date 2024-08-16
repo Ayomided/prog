@@ -26,7 +26,15 @@ func base() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html><head><title>David Adediji | Blog</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta name=\"description\" content=\"Why you wanna try me!\"><script src=\"https://unpkg.com/htmx.org@2.0.1/dist/htmx.js\" integrity=\"sha384-gpIh5aLQ0qmX8kZdyhsd6jA24uKLkqIr1WAGtantR4KsS97l/NRBvh8/8OYGThAf\" crossorigin=\"anonymous\"></script><script src=\"https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries\"></script><link rel=\"stylesheet\" href=\"global.css\"><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap\" rel=\"stylesheet\"><style>\n                   body {\n                       font-family: \"Space Grotesk\", sans-serif;\n                   }\n            </style></head><body class=\"p-10\"><div class=\"prose max-w-none\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>David Adediji | Blog</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta name=\"description\" content=\"Why you wanna try me!\"><script src=\"https://unpkg.com/htmx.org@2.0.1/dist/htmx.js\" integrity=\"sha384-gpIh5aLQ0qmX8kZdyhsd6jA24uKLkqIr1WAGtantR4KsS97l/NRBvh8/8OYGThAf\" crossorigin=\"anonymous\"></script><script src=\"https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries\"></script><link rel=\"stylesheet\" href=\"global.css\"><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap\" rel=\"stylesheet\"><style>\n            body {\n                font-family: \"Space Grotesk\", sans-serif;\n            }\n        </style></head><body class=\"bg-gray-100\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Header().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main class=\"container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16\"><div class=\"prose max-w-none\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -34,7 +42,7 @@ func base() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></main></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

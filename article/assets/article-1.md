@@ -1,12 +1,3 @@
----
-title: My First Blog Post
-date: 2023-05-10
-author: Jane Doe
-tags: gleam, web development, blogging
----
-
-# Welcome to My Gleam Blog
-
 This is my first blog post using a Gleam-based blogging system. I'm excited to share my thoughts on web development and programming in general.
 
 ## Why Gleam?

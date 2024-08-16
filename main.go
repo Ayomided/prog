@@ -12,10 +12,12 @@ import (
 
 func HomeHandler(ctx echo.Context, db *sqlite.Queries) error {
 	articles, err := db.QueryArticles(ctx.Request().Context())
+	projects, err := db.QueryProjects(ctx.Request().Context())
+
 	if err != nil {
 		return err
 	}
-	return views.Home(articles).Render(ctx.Request().Context(), ctx.Response())
+	return views.Home(articles, projects).Render(ctx.Request().Context(), ctx.Response())
 }
 
 func ArticleHandler(ctx echo.Context, db *sqlite.Queries, parser article.Parser) error {

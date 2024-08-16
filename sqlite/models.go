@@ -16,3 +16,10 @@ type Article struct {
 	Slug      string
 	Filename  string
 }
+
+type Project struct {
+	ID          int64
+	Title       string
+	Link        string
+	Description string
+}

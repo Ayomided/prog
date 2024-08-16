@@ -5,15 +5,36 @@ import (
 	"github.com/Ayomided/prog.git/sqlite"
 )
 
-templ Home(articles []sqlite.Article) {
+templ Home(articles []sqlite.Article, projects []sqlite.Project) {
 	@base() {
-		<div>Homepage</div>
-		<ul>
-			for _, article := range articles {
-				<li>
-					<a href={ templ.URL(fmt.Sprintf("articles/%v", article.Slug)) }>{ article.Title }</a>
-				</li>
-			}
-		</ul>
+		<div class="max-w-none px-4 sm:px-6 lg:px-8">
+			<h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">David Adediji</h3>
+			<p class="border-2 rounded-lg w-full max-w-screen py-2 px-3 mb-8 text-sm sm:text-base">I am David</p>
+			<section>
+				<h3 id="articles" class="text-xl sm:text-2xl font-semibold mb-4">Recent Articles</h3>
+				<ul class="space-y-2">
+					for _, article := range articles {
+						<li>
+							<a href={ templ.URL(fmt.Sprintf("articles/%v", article.Slug)) } class="text-[#51829B] hover:underline">
+								{ article.Title }
+							</a>
+						</li>
+					}
+				</ul>
+			</section>
+			<section>
+				<h3 id="articles" class="text-xl sm:text-2xl font-semibold mb-4">Featured Projects</h3>
+				<ul class="space-y-2">
+					for _, project := range projects {
+						<li>
+							<a href={ templ.URL(fmt.Sprintf("%v", project.Link)) } class="text-[#51829B] hover:underline">
+								{ project.Title }
+							</a>
+							<p class="">{ project.Description }</p>
+						</li>
+					}
+				</ul>
+			</section>
+		</div>
 	}
 }
