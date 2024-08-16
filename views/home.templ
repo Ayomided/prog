@@ -1,0 +1,19 @@
+package views
+
+import (
+	"fmt"
+	"github.com/Ayomided/prog.git/sqlite"
+)
+
+templ Home(articles []sqlite.Article) {
+	@base() {
+		<div>Homepage</div>
+		<ul>
+			for _, article := range articles {
+				<li>
+					<a href={ templ.URL(fmt.Sprintf("articles/%v", article.Slug)) }>{ article.Title }</a>
+				</li>
+			}
+		</ul>
+	}
+}

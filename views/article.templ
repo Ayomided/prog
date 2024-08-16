@@ -1,0 +1,24 @@
+package views
+
+import (
+	"context"
+	"io"
+)
+
+func unsafe(html string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		_, err = io.WriteString(w, html)
+		return
+	})
+}
+
+templ Article(title, content string) {
+	@base() {
+		<div>
+			<h1>{ title }</h1>
+			<p>
+				@unsafe(content)
+			</p>
+		</div>
+	}
+}
