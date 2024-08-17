@@ -12,6 +12,11 @@ primary_region = 'lhr'
 
 [env]
   PORT = '8080'
+  GIN_MODE = "release"
+
+[mounts]
+    source="sqlite_data"
+    destination="/root/data"
 
 [http_service]
   internal_port = 8080

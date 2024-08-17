@@ -5,36 +5,62 @@ import (
 	"github.com/Ayomided/prog.git/sqlite"
 )
 
+var projectTags = [4]string{"AI", "LLMs", "Emergung tech", "Startup"}
+
 templ Home(articles []sqlite.Article, projects []sqlite.Project) {
 	@base() {
-		<div class="max-w-none px-4 sm:px-6 lg:px-8">
-			<h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">David Adediji</h3>
-			<p class="border-2 rounded-lg w-full max-w-screen py-2 px-3 mb-8 text-sm sm:text-base">I am David</p>
-			<section>
-				<h3 id="articles" class="text-xl sm:text-2xl font-semibold mb-4">Recent Articles</h3>
-				<ul class="space-y-2">
-					for _, article := range articles {
-						<li>
-							<a href={ templ.URL(fmt.Sprintf("articles/%v", article.Slug)) } class="text-[#51829B] hover:underline">
-								{ article.Title }
-							</a>
-						</li>
-					}
-				</ul>
-			</section>
-			<section>
-				<h3 id="articles" class="text-xl sm:text-2xl font-semibold mb-4">Featured Projects</h3>
-				<ul class="space-y-2">
-					for _, project := range projects {
-						<li>
-							<a href={ templ.URL(fmt.Sprintf("%v", project.Link)) } class="text-[#51829B] hover:underline">
-								{ project.Title }
-							</a>
-							<p class="">{ project.Description }</p>
-						</li>
-					}
-				</ul>
-			</section>
+		<div class="flex justify-center">
+			<div class="max-w-none px-4 sm:px-6 lg:px-8">
+				<section class="intro text-[#F3D8BD]">
+					<div class="options flex space-x-4 overflow-x-auto py-2">
+						<div class="option cursor-pointer px-4 py-2  hover:text-gray-700" data-target="anyone" hx-get="/content?target=anyone" hx-target="#content-text" hx-swap="innerHTML">Anyone</div>
+						<div class="option cursor-pointer px-4 py-2  hover:text-gray-700" data-target="recruiters" hx-get="/content?target=recruiters" hx-target="#content-text" hx-swap="innerHTML">Recruiters</div>
+						<div class="option cursor-pointer px-4 py-2  hover:text-gray-700" data-target="design-directors" hx-get="/content?target=design-directors" hx-target="#content-text" hx-swap="innerHTML">Engineers</div>
+						<div class="option cursor-pointer px-4 py-2  hover:text-gray-700" data-target="product-designers" hx-get="/content?target=product-designers" hx-target="#content-text" hx-swap="innerHTML">Startup Founders</div>
+						<div class="option cursor-pointer px-4 py-2  hover:text-gray-700" data-target="product-managers" hx-get="/content?target=product-managers" hx-target="#content-text" hx-swap="innerHTML">Product Managers</div>
+						<div class="option cursor-pointer px-4 py-2  hover:text-gray-700" data-target="engineers" hx-get="/content?target=engineers" hx-target="#content-text" hx-swap="innerHTML">AI Engineers</div>
+						<div class="option cursor-pointer px-4 py-2 rounded-md shadow-md text-white bg-black" data-target="downloadCV">Download Resume</div>
+					</div>
+					<div id="content-text" class="mt-6 text-3xl text-[#F3D8BD]"></div>
+					<p class="text-md">Open to new <a href="mailto:idavid.adediji@gmail.com?subject=Job Offer&body=Hello David,">roles</a></p>
+				</section>
+				<!--<h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">David Adediji</h3>-->
+				<!--<p class="border-2 rounded-lg w-full max-w-screen py-2 px-3 mb-8 text-sm sm:text-base">I am David</p>-->
+				<section>
+					<h3 id="articles" class="text-xl text-[#F3D8BD] sm:text-2xl font-semibold mb-4">Recent Articles</h3>
+					<ul class="space-y-2">
+						for _, article := range articles {
+							<li>
+								<a href={ templ.URL(fmt.Sprintf("articles/%v", article.Slug)) } class="text-[#F3D8BD] hover:underline">
+									{ article.Title }
+								</a>
+							</li>
+						}
+					</ul>
+				</section>
+				<section>
+					<h3 id="articles" class="text-xl sm:text-2xl text-[#F3D8BD] font-semibold mb-4">Featured Projects</h3>
+					<div class="space-y-6">
+						for _, project := range projects {
+							<div class="rounded-lg shadow-md px-6 py-3 bg-black flex flex-col">
+								<h4 class="text-2xl pb-4">
+									<a href={ templ.URL(fmt.Sprintf("%v", project.Link)) } class="text-[#F3D8BD] hover:underline">
+										You could catch a unicorn, or become one
+										<!--This should be called project.Fancy title-->
+									</a>
+								</h4>
+								<div class="flex flex-wrap gap-2">
+									for _, tag := range projectTags {
+										<!--This should in tags seperated by commas and parsed into the span-->
+										<span class="rounded-lg bg-white shadow-md p-2 max-w-xs text-center">{ tag }</span>
+									}
+								</div>
+								<p class="text-[#F3D8BD]">{ project.Description }</p>
+							</div>
+						}
+					</div>
+				</section>
+			</div>
 		</div>
 	}
 }

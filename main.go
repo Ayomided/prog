@@ -83,6 +83,33 @@ func main() {
 
 	parser := article.NewParser()
 
+	e.Static("/static", "static")
+
+	// Route to handle HTMX requests
+	e.GET("/content", func(c echo.Context) error {
+		target := c.QueryParam("target")
+
+		var content string
+		switch target {
+		case "anyone":
+			content = `<h1 class="text text-anyone text-[#F3D8BD]">Hello there, I’m a designer who cares about making beautiful things that help people.</h1>`
+		case "recruiters":
+			content = `<h1 class="text text-recruiters text-[#F3D8BD]">I’m a product designer with 15 years of experience across brand and product, at companies large and small. I’m not actively looking for a new role.</h1>`
+		case "design-directors":
+			content = `<h1 class="text text-design-directors text-[#F3D8BD]">Content for Design Directors</h1>`
+		case "product-designers":
+			content = `<h1 class="text text-product-designers text-[#F3D8BD]">Content for Product Designers</h1>`
+		case "product-managers":
+			content = `<h1 class="text text-product-managers text-[#F3D8BD]">Content for Product Managers</h1>`
+		case "engineers":
+			content = `<h1 class="text text-engineers text-[#F3D8BD]">Content for Engineers</h1>`
+		default:
+			content = ``
+		}
+
+		return c.HTML(http.StatusOK, content)
+	})
+
 	e.GET("/", func(c echo.Context) error {
 		return HomeHandler(c, db)
 	})
