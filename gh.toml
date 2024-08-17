@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for prog on 2024-08-17T19:02:59+01:00
+# fly.toml app configuration file generated for prog on 2024-08-17T15:39:21+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,20 +7,24 @@ app = 'prog'
 primary_region = 'lhr'
 
 [build]
-[build.args]
-GO_VERSION = '1.22.5'
 
 [env]
 PORT = '8080'
 
 [[mounts]]
-source = 'prog_data'
+source = 'sqlite_data'
 destination = '/data'
+processes = ["app"]
+
+[[restart]]
+policy = "always"
+retries = 10
+processes = ["app"]
 
 [http_service]
 internal_port = 8080
 force_https = true
-auto_stop_machines = 'stop'
+auto_stop_machines = "suspend"
 auto_start_machines = true
 min_machines_running = 0
 processes = ['app']

@@ -45,7 +45,7 @@ func Home(articles []sqlite.Article, projects []sqlite.Project) templ.Component 
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex justify-center\"><div class=\"max-w-none px-4 sm:px-6 lg:px-8\"><section class=\"intro text-[#F3D8BD]\"><div class=\"options flex space-x-4 overflow-x-auto py-2\"><div class=\"option cursor-pointer px-4 py-2  hover:text-gray-700\" data-target=\"anyone\" hx-get=\"/content?target=anyone\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Anyone</div><div class=\"option cursor-pointer px-4 py-2  hover:text-gray-700\" data-target=\"recruiters\" hx-get=\"/content?target=recruiters\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Recruiters</div><div class=\"option cursor-pointer px-4 py-2  hover:text-gray-700\" data-target=\"design-directors\" hx-get=\"/content?target=design-directors\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Engineers</div><div class=\"option cursor-pointer px-4 py-2  hover:text-gray-700\" data-target=\"product-designers\" hx-get=\"/content?target=product-designers\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Startup Founders</div><div class=\"option cursor-pointer px-4 py-2  hover:text-gray-700\" data-target=\"product-managers\" hx-get=\"/content?target=product-managers\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Product Managers</div><div class=\"option cursor-pointer px-4 py-2  hover:text-gray-700\" data-target=\"engineers\" hx-get=\"/content?target=engineers\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">AI Engineers</div><div class=\"option cursor-pointer px-4 py-2 rounded-md shadow-md text-white bg-black\" data-target=\"downloadCV\">Download Resume</div></div><div id=\"content-text\" class=\"mt-6 text-3xl text-[#F3D8BD]\"></div><p class=\"text-md\">Open to new <a href=\"mailto:idavid.adediji@gmail.com?subject=Job Offer&amp;body=Hello David,\">roles</a></p></section><!--<h3 class=\"text-3xl sm:text-4xl lg:text-5xl font-bold mb-4\">David Adediji</h3>--><!--<p class=\"border-2 rounded-lg w-full max-w-screen py-2 px-3 mb-8 text-sm sm:text-base\">I am David</p>--><section><h3 id=\"articles\" class=\"text-xl text-[#F3D8BD] sm:text-2xl font-semibold mb-4\">Recent Articles</h3><ul class=\"space-y-2\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex justify-center\"><div class=\"max-w-none px-4 sm:px-6 lg:px-8 w-full\"><section class=\"intro text-[#F3D8BD]\"><div class=\"options flex flex-nowrap space-x-4 overflow-x-auto py-2\"><div class=\"option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap\" data-target=\"anyone\" hx-get=\"/content?target=anyone\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Anyone</div><div class=\"option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap\" data-target=\"recruiters\" hx-get=\"/content?target=recruiters\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Recruiters</div><div class=\"option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap\" data-target=\"design-directors\" hx-get=\"/content?target=design-directors\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Engineers</div><div class=\"option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap\" data-target=\"product-designers\" hx-get=\"/content?target=product-designers\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Startup Founders</div><div class=\"option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap\" data-target=\"product-managers\" hx-get=\"/content?target=product-managers\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Product Managers</div><div class=\"option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap\" data-target=\"engineers\" hx-get=\"/content?target=engineers\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">AI Engineers</div><div class=\"option cursor-pointer px-4 py-2 rounded-md shadow-md text-white bg-black whitespace-nowrap\" data-target=\"downloadCV\">Download Resume</div></div><div id=\"content-text\" class=\"mt-6 text-2xl sm:text-3xl text-[#F3D8BD]\"></div><p class=\"text-md\">Open to new <a href=\"mailto:idavid.adediji@gmail.com?subject=Job Offer&amp;body=Hello David,\">roles</a></p></section><section><h3 id=\"articles\" class=\"text-xl sm:text-2xl text-[#F3D8BD] font-semibold mb-4\">Recent Articles</h3><ul class=\"space-y-2\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -66,7 +66,7 @@ func Home(articles []sqlite.Article, projects []sqlite.Project) templ.Component 
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(article.Title)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 35, Col: 24}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 33, Col: 24}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -82,7 +82,7 @@ func Home(articles []sqlite.Article, projects []sqlite.Project) templ.Component 
 				return templ_7745c5c3_Err
 			}
 			for _, project := range projects {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"rounded-lg shadow-md px-6 py-3 bg-black flex flex-col\"><h4 class=\"text-2xl pb-4\"><a href=\"")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"rounded-lg shadow-md px-4 sm:px-6 py-3 bg-black flex flex-col\"><h4 class=\"text-xl sm:text-2xl pb-4\"><a href=\"")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -91,19 +91,19 @@ func Home(articles []sqlite.Article, projects []sqlite.Project) templ.Component 
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-[#F3D8BD] hover:underline\">You could catch a unicorn, or become one<!--This should be called project.Fancy title--></a></h4><div class=\"flex flex-wrap gap-2\">")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-[#F3D8BD] hover:underline\">You could catch a unicorn, or become one</a></h4><div class=\"flex flex-wrap gap-2\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				for _, tag := range projectTags {
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!--This should in tags seperated by commas and parsed into the span--> <span class=\"rounded-lg bg-white shadow-md p-2 max-w-xs text-center\">")
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"rounded-lg bg-white shadow-md p-2 text-sm\">")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
 					var templ_7745c5c3_Var6 string
 					templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(tag)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 55, Col: 84}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 51, Col: 71}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 					if templ_7745c5c3_Err != nil {
@@ -121,7 +121,7 @@ func Home(articles []sqlite.Article, projects []sqlite.Project) templ.Component 
 				var templ_7745c5c3_Var7 string
 				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(project.Description)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 58, Col: 55}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 54, Col: 55}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 				if templ_7745c5c3_Err != nil {

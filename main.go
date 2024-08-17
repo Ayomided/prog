@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"embed"
 	"fmt"
 	"net/http"
 	"os"
@@ -14,6 +15,9 @@ import (
 	"github.com/labstack/echo"
 	_ "github.com/mattn/go-sqlite3"
 )
+
+//go:embed data/*.db
+var Data embed.FS
 
 func RssHandler(ctx echo.Context, db *sqlite.Queries) error {
 	feed := &feeds.Feed{
@@ -123,8 +127,12 @@ func main() {
 	e.Logger.Fatal(e, e.Start(":"+port))
 }
 
+const (
+	dbPath = "/data/blog.db"
+)
+
 func setupDatabaseConnection() *sql.DB {
-	db, err := sql.Open("sqlite3", "blog.db")
+	db, err := sql.Open("sqlite3", dbPath)
 	if err != nil {
 		panic(err)
 	}
