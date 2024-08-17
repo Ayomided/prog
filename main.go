@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/Ayomided/prog.git/article"
@@ -70,6 +71,10 @@ func ArticleHandler(ctx echo.Context, db *sqlite.Queries, parser article.Parser)
 }
 
 func main() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 	dbConnection := setupDatabaseConnection()
 
 	db := sqlite.New(dbConnection)
@@ -88,7 +93,7 @@ func main() {
 		return ArticleHandler(c, db, parser)
 	})
 
-	e.Logger.Fatal(e, e.Start(":8080"))
+	e.Logger.Fatal(e, e.Start(":"+port))
 }
 
 func setupDatabaseConnection() *sql.DB {
