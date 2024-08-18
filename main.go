@@ -22,7 +22,7 @@ var Data embed.FS
 func RssHandler(ctx echo.Context, db *sqlite.Queries) error {
 	feed := &feeds.Feed{
 		Title:       "David Adediji | blog",
-		Link:        &feeds.Link{Href: "localhost:8080"},
+		Link:        &feeds.Link{Href: "https://prog.fly.dev"},
 		Description: "Discussing",
 		Author:      &feeds.Author{Name: "David Adediji", Email: "idavid.adediji@gmail.com"},
 		Created:     time.Now(),
@@ -39,7 +39,7 @@ func RssHandler(ctx echo.Context, db *sqlite.Queries) error {
 			&feeds.Item{
 				Id:      fmt.Sprintf("tag: %v, %v:/articles/%v", "localhost", article.CreatedAt, article.Slug),
 				Title:   article.Title,
-				Link:    &feeds.Link{Href: fmt.Sprintf("localhost:8080/articles/%v", article.Slug)},
+				Link:    &feeds.Link{Href: fmt.Sprintf("https://prog.fly.dev/articles/%v", article.Slug)},
 				Created: article.CreatedAt,
 			})
 	}
@@ -128,7 +128,7 @@ func main() {
 }
 
 const (
-	dbPath = "/data/blog.db"
+	dbPath = "data/blog.db"
 )
 
 func setupDatabaseConnection() *sql.DB {

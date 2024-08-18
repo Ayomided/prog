@@ -42,7 +42,7 @@ func base() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></main><script src=\"/static/scripts/main.js\"></script></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></main><script>\n                document.addEventListener('DOMContentLoaded', function () {\n                const defaultOption = document.querySelector('.option[data-target=\"anyone\"]');\n                if (defaultOption) {\n                    defaultOption.click();\n                }\n                });\n\t\t\t</script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

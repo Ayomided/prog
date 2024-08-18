@@ -27,7 +27,14 @@ templ base() {
 					{ children... }
 				</div>
 			</main>
-			<script src="/static/scripts/main.js"></script>
+			<script>
+                document.addEventListener('DOMContentLoaded', function () {
+                const defaultOption = document.querySelector('.option[data-target="anyone"]');
+                if (defaultOption) {
+                    defaultOption.click();
+                }
+                });
+			</script>
 		</body>
 	</html>
 }
