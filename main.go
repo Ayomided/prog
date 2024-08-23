@@ -149,7 +149,7 @@ func main() {
 		return ArticleHandler(c, db, parser)
 	})
 	e.GET("/resume", func(c echo.Context) error {
-		return c.Attachment("article/assets/images/DAVIDADEDIJI-CV.pdf", "DAVIDADEDIJI-CV.pdf")
+		return c.Attachment("article/assets/resume/DAVIDADEDIJI-CV.pdf", "DAVIDADEDIJI-CV.pdf")
 	})
 
 	e.Logger.Fatal(e, e.Start(":"+port))
