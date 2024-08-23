@@ -40,7 +40,7 @@ templ Home(articles []sqlite.Article, projects []sqlite.Project) {
 				for _, article := range articles {
 					<a href={ templ.URL(fmt.Sprintf("articles/%v", article.Slug)) } class="text-white text-sm no-underline">
 						<div class="mb-4">
-							<div class="h-64 sm:h-72 md:h-80 w-full flex flex-col justify-center bg-cover bg-center rounded-xl bg-[url('http://localhost:8080/images/illu2.jpg')]">
+							<div class="h-64 sm:h-72 md:h-80 w-full flex flex-col justify-center bg-cover bg-center rounded-xl bg-[url('https://prog.fly.dev/images/illu2.jpg')]">
 								<div class="flex flex-col items-center justify-center h-full p-4 text-center">
 									<span class="text-white text-lg sm:text-xl md:text-2xl no-underline">{ article.Title }</span>
 									<span class="text-white text-lg sm:text-xl md:text-2xl "></span>
