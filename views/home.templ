@@ -5,57 +5,69 @@ import (
 	"github.com/Ayomided/prog.git/sqlite"
 )
 
-var projectTags = [4]string{"AI", "LLMs", "Emergung tech", "Startup"}
-
 templ Home(articles []sqlite.Article, projects []sqlite.Project) {
 	@base() {
-		<div class="flex justify-center">
-			<div class="max-w-none px-4 sm:px-6 lg:px-8 w-full">
-				<section class="intro text-[#F3D8BD]">
-					<div class="options flex flex-nowrap space-x-4 overflow-x-auto py-2">
-						<div class="option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap" data-target="anyone" hx-get="/content?target=anyone" hx-target="#content-text" hx-swap="innerHTML">Anyone</div>
-						<div class="option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap" data-target="recruiters" hx-get="/content?target=recruiters" hx-target="#content-text" hx-swap="innerHTML">Recruiters</div>
-						<div class="option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap" data-target="design-directors" hx-get="/content?target=design-directors" hx-target="#content-text" hx-swap="innerHTML">Engineers</div>
-						<div class="option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap" data-target="product-designers" hx-get="/content?target=product-designers" hx-target="#content-text" hx-swap="innerHTML">Startup Founders</div>
-						<div class="option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap" data-target="product-managers" hx-get="/content?target=product-managers" hx-target="#content-text" hx-swap="innerHTML">Product Managers</div>
-						<div class="option cursor-pointer px-4 py-2 hover:text-gray-700 whitespace-nowrap" data-target="engineers" hx-get="/content?target=engineers" hx-target="#content-text" hx-swap="innerHTML">AI Engineers</div>
-						<div class="option cursor-pointer px-4 py-2 rounded-md shadow-md text-white bg-black whitespace-nowrap" data-target="downloadCV">Download Resume</div>
-					</div>
-					<div id="content-text" class="mt-6 text-2xl sm:text-3xl text-[#F3D8BD]"></div>
-					<p class="text-md">Open to new <a href="mailto:idavid.adediji@gmail.com?subject=Job Offer&body=Hello David,">roles</a></p>
-				</section>
-				<section>
-					<h3 id="articles" class="text-xl sm:text-2xl text-[#F3D8BD] font-semibold mb-4">Recent Articles</h3>
-					<ul class="space-y-2">
-						for _, article := range articles {
-							<li>
-								<a href={ templ.URL(fmt.Sprintf("articles/%v", article.Slug)) } class="text-[#F3D8BD] hover:underline">
-									{ article.Title }
-								</a>
-							</li>
-						}
-					</ul>
-				</section>
-				<section>
-					<h3 id="articles" class="text-xl sm:text-2xl text-[#F3D8BD] font-semibold mb-4">Featured Projects</h3>
-					<div class="space-y-6">
-						for _, project := range projects {
-							<div class="rounded-lg shadow-md px-4 sm:px-6 py-3 bg-black flex flex-col">
-								<h4 class="text-xl sm:text-2xl pb-4">
-									<a href={ templ.URL(fmt.Sprintf("%v", project.Link)) } class="text-[#F3D8BD] hover:underline">
-										You could catch a unicorn, or become one
-									</a>
-								</h4>
-								<div class="flex flex-wrap gap-2">
-									for _, tag := range projectTags {
-										<span class="rounded-lg bg-white shadow-md p-2 text-sm">{ tag }</span>
-									}
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="row">
+				<div class="col-12">
+					<section class="intro">
+						<div class="options flex flex-wrap justify-center sm:justify-start gap-2 sm:gap-4 py-2">
+							<div class="option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300" data-target="anyone" hx-get="/content?target=anyone" hx-target="#content-text" hx-swap="innerHTML">Anyone</div>
+							<div class="option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300" data-target="recruiters" hx-get="/content?target=recruiters" hx-target="#content-text" hx-swap="innerHTML">Recruiters</div>
+							<div class="option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300" data-target="engineers" hx-get="/content?target=engineers" hx-target="#content-text" hx-swap="innerHTML">Engineers</div>
+							<div class="option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300" data-target="startup-founders" hx-get="/content?target=startup-founders" hx-target="#content-text" hx-swap="innerHTML">Startup Founders</div>
+							<div class="option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300" data-target="product-managers" hx-get="/content?target=product-managers" hx-target="#content-text" hx-swap="innerHTML">Product Managers</div>
+							<div class="option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300" data-target="ai-engineers" hx-get="/content?target=ai-engineers" hx-target="#content-text" hx-swap="innerHTML">AI Engineers</div>
+						</div>
+						<div class="flex justify-between items-center mt-4">
+							<p class="text-md">
+								<a href="mailto:idavid.adediji@gmail.com?subject=Job Offer&body=Hello David," class="no-underline bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300">✨Open to new roles✨</a>
+							</p>
+							<a href="/resume">
+								<div class="cursor-pointer px-4 py-2 rounded-full shadow-md text-white bg-black hover:bg-gray-800 transition-colors duration-300" data-target="downloadCV">Download Resume</div>
+							</a>
+						</div>
+						<div id="content-text" class="mt-6 text-lg text-justify sm:text-xl"></div>
+					</section>
+				</div>
+			</div>
+			<div class="row mt-8">
+				<div class="col-12">
+					<p class="text-2xl mb-10 border-b-2 pb-2 w-52 border-black">Blog posts</p>
+				</div>
+			</div>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+				for _, article := range articles {
+					<a href={ templ.URL(fmt.Sprintf("articles/%v", article.Slug)) } class="text-white text-sm no-underline">
+						<div class="mb-4">
+							<div class="h-64 sm:h-72 md:h-80 w-full flex flex-col justify-center bg-cover bg-center rounded-xl bg-[url('http://localhost:8080/images/illu2.jpg')]">
+								<div class="flex flex-col items-center justify-center h-full p-4 text-center">
+									<span class="text-white text-lg sm:text-xl md:text-2xl no-underline">{ article.Title }</span>
+									<span class="text-white text-lg sm:text-xl md:text-2xl "></span>
+									<span class="underline text-xs text-white">Image source</span>
 								</div>
-								<p class="text-[#F3D8BD]">{ project.Description }</p>
 							</div>
-						}
+						</div>
+					</a>
+				}
+			</div>
+			<div class="row mt-8">
+				<div class="col-12">
+					<p class="text-2xl mb-10 border-b-2 pb-2 w-52 border-black">Project</p>
+				</div>
+			</div>
+			<div class="space-y-6 mt-1">
+				for _, project := range projects {
+					<div class="flex flex-col sm:flex-row items-start sm:space-y-0 sm:space-x-4 px-4 ">
+						<span class="text-2xl sm:text-3xl">🪄</span>
+						<div class="flex-grow">
+							<a href={ templ.URL(fmt.Sprintf("%v", project.Link)) } class="text-lg font-semibold text-blue-600 hover:underline">
+								{ project.Title }
+							</a>
+							<p class="mt-1 text-sm text-gray-600">{ project.Description }</p>
+						</div>
 					</div>
-				</section>
+				}
 			</div>
 		</div>
 	}

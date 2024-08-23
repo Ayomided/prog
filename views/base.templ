@@ -20,7 +20,7 @@ templ base() {
             }
         </style>
 		</head>
-		<body class="bg-[#9D4433] text-[#F3D8BD]">
+		<body class="">
 			@Header()
 			<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
 				<div class="prose max-w-none">
@@ -29,10 +29,27 @@ templ base() {
 			</main>
 			<script>
                 document.addEventListener('DOMContentLoaded', function () {
-                const defaultOption = document.querySelector('.option[data-target="anyone"]');
+                const defaultOption = document.querySelector('.option[data-target="startup-founders"]');
                 if (defaultOption) {
                     defaultOption.click();
                 }
+                const options = document.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        // Remove 'selected' class from all options
+                        options.forEach(opt => opt.classList.remove('selected', 'bg-gray-200', 'text-gray-600'));
+
+                        // Add 'selected' class to clicked option
+                        option.classList.add('selected', 'bg-gray-200');
+
+                        // Gray out other options
+                        options.forEach(opt => {
+                            if (!opt.classList.contains('selected')) {
+                                opt.classList.add('text-gray-600');
+                            }
+                        });
+                    });
+                });
                 });
 			</script>
 		</body>

@@ -1,15 +1,30 @@
 package views
 
 templ Header() {
-	<header class="w-full max-w-screen px-4 sm:px-6 py-3">
-		<nav class="flex flex-col sm:flex-row justify-between items-center">
-			<a href="/" class="underline text-lg font-semibold mb-2 sm:mb-0">Ji</a>
-			<ul class="flex flex-wrap justify-center sm:justify-end space-x-2 text-[#F3D8BD] sm:space-x-4">
-				<li><a href="/#articles" class="hover:underline">Blog</a></li>
-				<li><a href="https://github.com/Ayomided" class="hover:underline">GitHub</a></li>
-				<li><a href="https://www.linkedin.com/in/dadediji/" class="hover:underline">LinkedIn</a></li>
-				<li><a href="/feed" class="hover:underline">RSS</a></li>
-			</ul>
+	<header class="w-full max-w-screen px-6 py-6 bg-white">
+		<nav class="container mx-auto">
+			<div class="flex flex-col sm:flex-row justify-between items-center">
+				<a href="/" class="text-2xl font-bold tracking-tight mb-4 sm:mb-0 transition-colors duration-300 hover:text-gray-600">
+					Ji<span class="text-blue-500">.</span>
+				</a>
+				<ul class="flex items-center space-x-6">
+					<li>
+						<a href="/articles" class="text-sm uppercase tracking-wide hover:text-blue-500 transition-colors duration-300">Blog</a>
+					</li>
+					<li>
+						<a href="https://github.com/Ayomided" class="text-sm uppercase tracking-wide hover:text-blue-500 transition-colors duration-300">GitHub</a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/dadediji/" class="text-sm uppercase tracking-wide hover:text-blue-500 transition-colors duration-300">LinkedIn</a>
+					</li>
+					<li>
+						<a href="/feed" class="text-sm uppercase tracking-wide hover:text-blue-500 transition-colors duration-300">RSS</a>
+					</li>
+					<li>
+						<img src="http://localhost:8080/images/MadeByAHuman_08.svg" target="_blank" alt="made_by_david"/>
+					</li>
+				</ul>
+			</div>
 		</nav>
 	</header>
 	<main>

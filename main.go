@@ -73,6 +73,13 @@ func ArticleHandler(ctx echo.Context, db *sqlite.Queries, parser article.Parser)
 	}
 	return views.Article(article.Title, articleContent).Render(ctx.Request().Context(), ctx.Response())
 }
+func ArticleListHandler(ctx echo.Context, db *sqlite.Queries) error {
+	articles, err := db.QueryArticles(ctx.Request().Context())
+	if err != nil {
+		return err
+	}
+	return views.ArticleList(articles).Render(ctx.Request().Context(), ctx.Response())
+}
 
 func main() {
 	port := os.Getenv("PORT")
@@ -96,17 +103,17 @@ func main() {
 		var content string
 		switch target {
 		case "anyone":
-			content = `<h1 class="text text-anyone text-[#F3D8BD]">Hello there, I’m a designer who cares about making beautiful things that help people.</h1>`
+			content = `<h1 class="text text-anyone">Hello there, I am an explorer and enjoy understanding how things work and how to build better.</h1>`
 		case "recruiters":
-			content = `<h1 class="text text-recruiters text-[#F3D8BD]">I’m a product designer with 15 years of experience across brand and product, at companies large and small. I’m not actively looking for a new role.</h1>`
-		case "design-directors":
-			content = `<h1 class="text text-design-directors text-[#F3D8BD]">Content for Design Directors</h1>`
-		case "product-designers":
-			content = `<h1 class="text text-product-designers text-[#F3D8BD]">Content for Product Designers</h1>`
-		case "product-managers":
-			content = `<h1 class="text text-product-managers text-[#F3D8BD]">Content for Product Managers</h1>`
+			content = `<h1 class="text text-recruiters">Quick learning, emerging technologies, and rapid development.</h1>`
 		case "engineers":
-			content = `<h1 class="text text-engineers text-[#F3D8BD]">Content for Engineers</h1>`
+			content = `<h1 class="text text-engineers">\t\t\t\t vs "    " -> 👀</h1>`
+		case "startup-founders":
+			content = `<h1 class="text text-design-directors">I don't know who you are (yet), I don't know what your product is (yet). If you are looking for a doctor I can tell you I am not your person, but I have a very particular set of skills. Skills that I have acquired over a very long career. Skills that make me an asset for people like you. If you shoot me a message that will be the start of an amazing thing. I will be here, waiting for you.</h1>`
+		case "product-managers":
+			content = `<h1 class="text text-product-designers">Managers</h1>`
+		case "ai-engineers":
+			content = `<h1 class="text text-product-managers">GPT-5 Will be the best - <span class="italic align-middle text-sm">everyone</span></h1>`
 		default:
 			content = ``
 		}
@@ -114,14 +121,22 @@ func main() {
 		return c.HTML(http.StatusOK, content)
 	})
 
+	e.Static("/images", "article/assets/images")
+
 	e.GET("/", func(c echo.Context) error {
 		return HomeHandler(c, db)
 	})
 	e.GET("/feed", func(c echo.Context) error {
 		return RssHandler(c, db)
 	})
+	e.GET("/articles", func(c echo.Context) error {
+		return ArticleListHandler(c, db)
+	})
 	e.GET("/articles/:slug", func(c echo.Context) error {
 		return ArticleHandler(c, db, parser)
+	})
+	e.GET("/resume", func(c echo.Context) error {
+		return c.Attachment("article/assets/images/DAVIDADEDIJI-CV.pdf", "DAVIDADEDIJI-CV.pdf")
 	})
 
 	e.Logger.Fatal(e, e.Start(":"+port))
