@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"embed"
 	"fmt"
+	"io/fs"
 	"net/http"
 	"os"
 	"time"
@@ -18,6 +19,9 @@ import (
 
 //go:embed data/*.db
 var Data embed.FS
+
+//go:embed article/assets/images*
+var staticFiles embed.FS
 
 func RssHandler(ctx echo.Context, db *sqlite.Queries) error {
 	feed := &feeds.Feed{
@@ -94,8 +98,6 @@ func main() {
 
 	parser := article.NewParser()
 
-	e.Static("/static", "static")
-
 	// Route to handle HTMX requests
 	e.GET("/content", func(c echo.Context) error {
 		target := c.QueryParam("target")
@@ -121,7 +123,18 @@ func main() {
 		return c.HTML(http.StatusOK, content)
 	})
 
-	e.Static("/images", "article/assets/images")
+	if _, err := os.Stat("article/assets/images"); err == nil {
+		// Local development: serve files from the filesystem
+		e.Static("/images", "article/assets/images")
+	} else {
+		// Production: serve files from the embedded filesystem
+		fsys, err := fs.Sub(staticFiles, "article/assets/images")
+		if err != nil {
+			e.Logger.Fatal(err)
+		}
+		assetHandler := http.FileServer(http.FS(fsys))
+		e.GET("/images/*", echo.WrapHandler(http.StripPrefix("/images/", assetHandler)))
+	}
 
 	e.GET("/", func(c echo.Context) error {
 		return HomeHandler(c, db)
