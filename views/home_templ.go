@@ -43,7 +43,7 @@ func Home(articles []sqlite.Article, projects []sqlite.Project) templ.Component 
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"container mx-auto px-4 sm:px-6 lg:px-8\"><div class=\"row\"><div class=\"col-12\"><section class=\"intro\"><div class=\"options flex flex-wrap justify-center sm:justify-start gap-2 sm:gap-4 py-2\"><div class=\"option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300\" data-target=\"anyone\" hx-get=\"/content?target=anyone\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Anyone</div><div class=\"option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300\" data-target=\"recruiters\" hx-get=\"/content?target=recruiters\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Recruiters</div><div class=\"option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300\" data-target=\"engineers\" hx-get=\"/content?target=engineers\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Engineers</div><div class=\"option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300\" data-target=\"startup-founders\" hx-get=\"/content?target=startup-founders\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Startup Founders</div><div class=\"option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300\" data-target=\"product-managers\" hx-get=\"/content?target=product-managers\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">Product Managers</div><div class=\"option cursor-pointer px-3 py-2 text-sm sm:text-base hover:bg-gray-100 rounded-full transition-colors duration-300\" data-target=\"ai-engineers\" hx-get=\"/content?target=ai-engineers\" hx-target=\"#content-text\" hx-swap=\"innerHTML\">AI Engineers</div></div><div class=\"flex justify-between items-center mt-4\"><p class=\"text-md\"><a href=\"mailto:idavid.adediji@gmail.com?subject=Job Offer&amp;body=Hello David,\" class=\"no-underline bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300\">✨Open to new roles✨</a></p><a href=\"/resume\"><div class=\"cursor-pointer px-4 py-2 rounded-full shadow-md text-white bg-black hover:bg-gray-800 transition-colors duration-300\" data-target=\"downloadCV\">Download Resume</div></a></div><div id=\"content-text\" class=\"mt-6 text-lg text-justify sm:text-xl\"></div></section></div></div><div class=\"row mt-8\"><div class=\"col-12\"><p class=\"text-2xl mb-10 border-b-2 pb-2 w-52 border-black\">Blog posts</p></div></div><div class=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-gray-500 mb-5\">Checkout my blog below</p><div class=\"container mx-auto\"><div class=\"grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -57,48 +57,61 @@ func Home(articles []sqlite.Article, projects []sqlite.Project) templ.Component 
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-white text-sm no-underline\"><div class=\"mb-4\"><div class=\"h-64 sm:h-72 md:h-80 w-full flex flex-col justify-center bg-cover bg-center rounded-xl bg-[url(&#39;http://localhost:8080/images/illu2.jpg&#39;)]\"><div class=\"flex flex-col items-center justify-center h-full p-4 text-center\"><span class=\"text-white text-lg sm:text-xl md:text-2xl no-underline\">")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-black text-sm no-underline\"><div class=\"flex justify-between border-b-2 pb-2\"><span class=\"text-black text-md sm:text-md md:text-lg no-underline\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(article.Title)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 45, Col: 93}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 16, Col: 90}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span> <span class=\"text-white text-lg sm:text-xl md:text-2xl \"></span> <span class=\"underline text-xs text-white\">Image source</span></div></div></div></a>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span> <span>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var5 string
+				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(article.CreatedAt.Format(" 1, 2006"))
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 17, Col: 51}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span></div></a>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"row mt-8\"><div class=\"col-12\"><p class=\"text-2xl mb-10 border-b-2 pb-2 w-52 border-black\">Project</p></div></div><div class=\"space-y-6 mt-1\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><p class=\"text-gray-500 my-6\">Some featured projects</p><div class=\"space-y-6 mt-1\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			for _, project := range projects {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col sm:flex-row items-start sm:space-y-0 sm:space-x-4 px-4 \"><span class=\"text-2xl sm:text-3xl\">🪄</span><div class=\"flex-grow\"><a href=\"")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex\"><div class=\"flex-grow\"><a href=\"")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				var templ_7745c5c3_Var5 templ.SafeURL = templ.URL(fmt.Sprintf("%v", project.Link))
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var5)))
+				var templ_7745c5c3_Var6 templ.SafeURL = templ.URL(fmt.Sprintf("%v", project.Link))
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var6)))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-lg font-semibold text-blue-600 hover:underline\">")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-lg font-semibold hover:underline\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				var templ_7745c5c3_Var6 string
-				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(project.Title)
+				var templ_7745c5c3_Var7 string
+				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(project.Title)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 65, Col: 23}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 28, Col: 23}
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -106,12 +119,12 @@ func Home(articles []sqlite.Article, projects []sqlite.Project) templ.Component 
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				var templ_7745c5c3_Var7 string
-				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(project.Description)
+				var templ_7745c5c3_Var8 string
+				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(project.Description)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 67, Col: 66}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 30, Col: 66}
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

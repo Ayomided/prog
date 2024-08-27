@@ -14,9 +14,11 @@ func unsafe(html string) templ.Component {
 
 templ Article(title, content string) {
 	@base() {
-		<div class="">
-			<h1 class="">{ title }</h1>
-			<p class="">
+		<div class="prose prose-md">
+			<h1 class="block text-3xl font-medium tracking-wide text-gray-900 sm:text-3xl">
+				{ title }
+			</h1>
+			<p class="text-base">
 				@unsafe(content)
 			</p>
 		</div>

@@ -23,6 +23,9 @@ var Data embed.FS
 //go:embed article/assets/images*
 var staticFiles embed.FS
 
+//go:embed all:article/assets/resume
+var resumeFiles embed.FS
+
 func RssHandler(ctx echo.Context, db *sqlite.Queries) error {
 	feed := &feeds.Feed{
 		Title:       "David Adediji | blog",
@@ -84,6 +87,9 @@ func ArticleListHandler(ctx echo.Context, db *sqlite.Queries) error {
 	}
 	return views.ArticleList(articles).Render(ctx.Request().Context(), ctx.Response())
 }
+func AboutHandler(ctx echo.Context) error {
+	return views.About().Render(ctx.Request().Context(), ctx.Response())
+}
 
 func main() {
 	port := os.Getenv("PORT")
@@ -97,31 +103,6 @@ func main() {
 	e := echo.New()
 
 	parser := article.NewParser()
-
-	// Route to handle HTMX requests
-	e.GET("/content", func(c echo.Context) error {
-		target := c.QueryParam("target")
-
-		var content string
-		switch target {
-		case "anyone":
-			content = `<h1 class="text text-anyone">Hello there, I am an explorer and enjoy understanding how things work and how to build better.</h1>`
-		case "recruiters":
-			content = `<h1 class="text text-recruiters">Quick learning, emerging technologies, and rapid development.</h1>`
-		case "engineers":
-			content = `<h1 class="text text-engineers">\t\t\t\t vs "    " -> 👀</h1>`
-		case "startup-founders":
-			content = `<h1 class="text text-design-directors">I don't know who you are (yet), I don't know what your product is (yet). If you are looking for a doctor I can tell you I am not your person, but I have a very particular set of skills. Skills that I have acquired over a very long career. Skills that make me an asset for people like you. If you shoot me a message that will be the start of an amazing thing. I will be here, waiting for you.</h1>`
-		case "product-managers":
-			content = `<h1 class="text text-product-designers">Managers</h1>`
-		case "ai-engineers":
-			content = `<h1 class="text text-product-managers">GPT-5 Will be the best - <span class="italic align-middle text-sm">everyone</span></h1>`
-		default:
-			content = ``
-		}
-
-		return c.HTML(http.StatusOK, content)
-	})
 
 	if _, err := os.Stat("article/assets/images"); err == nil {
 		// Local development: serve files from the filesystem
@@ -144,6 +125,9 @@ func main() {
 	})
 	e.GET("/articles", func(c echo.Context) error {
 		return ArticleListHandler(c, db)
+	})
+	e.GET("/about", func(c echo.Context) error {
+		return AboutHandler(c)
 	})
 	e.GET("/articles/:slug", func(c echo.Context) error {
 		return ArticleHandler(c, db, parser)
