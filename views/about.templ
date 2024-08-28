@@ -1,11 +1,29 @@
 package views
 
-templ About() {
+import (
+	"fmt"
+	"github.com/Ayomided/prog.git/sqlite"
+)
+
+templ About(projects []sqlite.Project) {
 	@base() {
 		<div class="prose">
 			<h2 class="block text-3xl font-medium tracking-wide text-gray-900 sm:text-3xl">David Adediji</h2>
 			<article class="text-base">Software Engineer. with thoughts on Golang, Gleam and other things</article>
 			<article class="text-base">I have my projects <a target="_blank" href="https://github.com/proqpine">[HERE]</a>.</article>
+			<p class="text-gray-500 my-6">Some featured projects</p>
+			<div class="space-y-2">
+				for _, project := range projects {
+					<div class="flex">
+						<div class="flex-grow">
+							<a href={ templ.URL(fmt.Sprintf("%v", project.Link)) } class="text-lg font-semibold hover:underline decoration-wavy">
+								{ project.Title }
+							</a>
+							<p class="mt-1 text-sm text-gray-600">{ project.Description }</p>
+						</div>
+					</div>
+				}
+			</div>
 			<h3>Experience</h3>
 			<div>
 				<div class="flex flex-col">

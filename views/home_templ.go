@@ -13,7 +13,7 @@ import (
 	"github.com/Ayomided/prog.git/sqlite"
 )
 
-func Home(articles []sqlite.Article, projects []sqlite.Project) templ.Component {
+func Home(articles []sqlite.Article) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -43,7 +43,7 @@ func Home(articles []sqlite.Article, projects []sqlite.Project) templ.Component 
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-gray-500 mb-5\">Checkout my blog below</p><div class=\"container mx-auto\"><div class=\"grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-gray-500 mb-5\">My interests are varied and I will share my interests across technology, design and others</p><div class=\"container mx-auto\"><div class=\"grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -88,52 +88,7 @@ func Home(articles []sqlite.Article, projects []sqlite.Project) templ.Component 
 					return templ_7745c5c3_Err
 				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><p class=\"text-gray-500 my-6\">Some featured projects</p><div class=\"space-y-6 mt-1\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			for _, project := range projects {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex\"><div class=\"flex-grow\"><a href=\"")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				var templ_7745c5c3_Var6 templ.SafeURL = templ.URL(fmt.Sprintf("%v", project.Link))
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var6)))
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-lg font-semibold hover:underline\">")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				var templ_7745c5c3_Var7 string
-				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(project.Title)
-				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 28, Col: 23}
-				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a><p class=\"mt-1 text-sm text-gray-600\">")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				var templ_7745c5c3_Var8 string
-				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(project.Description)
-				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 30, Col: 66}
-				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p></div></div>")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><p class=\"text-gray-500 my-6\">Existing physically: Some events and highlights</p><div class=\"container max-w-3xl h-48\"><div class=\"grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4\"><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"http://localhost:8080/images/atDojo.jpeg\" alt=\"at_dojo_event\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">Dojo Inclusiveness event</span></div><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"http://localhost:8080/images/bus.jpeg\" alt=\"London Red Bus\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">On the road again</span></div><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"http://localhost:8080/images/stpaul.jpeg\" alt=\"St Paul Cathedral\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">St Paul Cathedral</span></div><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"http://localhost:8080/images/college.jpeg\" alt=\"Birkeck University of London\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">College building at Birkbeck, UoL</span></div></div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

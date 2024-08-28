@@ -61,12 +61,10 @@ func RssHandler(ctx echo.Context, db *sqlite.Queries) error {
 
 func HomeHandler(ctx echo.Context, db *sqlite.Queries) error {
 	articles, err := db.QueryArticles(ctx.Request().Context())
-	projects, err := db.QueryProjects(ctx.Request().Context())
-
 	if err != nil {
 		return err
 	}
-	return views.Home(articles, projects).Render(ctx.Request().Context(), ctx.Response())
+	return views.Home(articles).Render(ctx.Request().Context(), ctx.Response())
 }
 
 func ArticleHandler(ctx echo.Context, db *sqlite.Queries, parser article.Parser) error {
@@ -87,8 +85,12 @@ func ArticleListHandler(ctx echo.Context, db *sqlite.Queries) error {
 	}
 	return views.ArticleList(articles).Render(ctx.Request().Context(), ctx.Response())
 }
-func AboutHandler(ctx echo.Context) error {
-	return views.About().Render(ctx.Request().Context(), ctx.Response())
+func AboutHandler(ctx echo.Context, db *sqlite.Queries) error {
+	projects, err := db.QueryProjects(ctx.Request().Context())
+	if err != nil {
+		return err
+	}
+	return views.About(projects).Render(ctx.Request().Context(), ctx.Response())
 }
 
 func main() {
@@ -127,7 +129,7 @@ func main() {
 		return ArticleListHandler(c, db)
 	})
 	e.GET("/about", func(c echo.Context) error {
-		return AboutHandler(c)
+		return AboutHandler(c, db)
 	})
 	e.GET("/articles/:slug", func(c echo.Context) error {
 		return ArticleHandler(c, db, parser)
