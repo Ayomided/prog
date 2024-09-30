@@ -8,7 +8,7 @@ name = "David Adediji"
 email = "idavid.adediji@gmail.com"
 +++
 
-<img src="https://prog.fly.dev/images/GleamBrandingLogo.svg" width="200" height="200"/>
+<img src="https://utfs.io/f/jW4txsTyhWQXEoXs7qrunQV8fRbs1ycUxSNtGCMIBqvDdhOA" width="200" height="200"/>
 
 This is my first blog post using a Gleam-based blogging system. I'm excited to share my thoughts on web development and programming in general.
 

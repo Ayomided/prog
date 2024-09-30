@@ -65,13 +65,23 @@
                     <div
                         class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4"
                     >
-                        <!-- <a href={ templ.URL(fmt.Sprintf("articles/%v", articles[i].Slug)) } class="text-black text-sm no-underline">
-						<div class="flex justify-between border-b-2 pb-2">
-							<span class="text-black text-md sm:text-md md:text-lg no-underline">{ articles[i].Title }</span>
-							<span>{ articles[i].CreatedAt.Format(" 1, 2006") }</span>
-						</div>
-					</a>
-				} -->
+                        {{if eq (len .) 0}} Nothing to see here {{end}} {{range
+                        .}}
+
+                        <a
+                            href="/posts/{{.Slug}}"
+                            class="text-black text-sm no-underline"
+                        >
+                            <div class="flex justify-between border-b-2 pb-2">
+                                <span
+                                    class="text-black text-md sm:text-md md:text-lg no-underline"
+                                    >{{.Title}}</span
+                                >
+                                <span>{{.Date}}</span>
+                            </div>
+                        </a>
+
+                        {{end}}
                     </div>
                     <p class="text-gray-500 my-6">
                         Existing physically: Some events and highlights

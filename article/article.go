@@ -20,7 +20,7 @@ func NewParser() Parser {
 		goldmark.WithExtensions(
 			extension.GFM,
 			highlighting.NewHighlighting(
-				highlighting.WithStyle("catppuccin-mocha"),
+				highlighting.WithStyle("catppuccin-frappe"),
 				highlighting.WithFormatOptions(
 					chromahtml.WithLineNumbers(true),
 					chromahtml.TabWidth(4),

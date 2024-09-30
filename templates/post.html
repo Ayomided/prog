@@ -58,13 +58,22 @@
                 </div>
             </div>
             <div>
-                <p class="text-gray-500 text-sm">{{.Author}}</p>
                 <div class="prose prose-md">
                     <h1
                         class="block text-3xl font-medium tracking-wide text-gray-900 sm:text-3xl"
                     >
                         {{.Title}}
                     </h1>
+                    <div class="container mx-auto">
+                        {{with .Author}}
+                        <div class="mt-4">
+                            <p class="text-gray-500">
+                                Author:
+                                <a href="mailto:{{.Email}}">{{.Name}}</a>
+                            </p>
+                        </div>
+                        {{end}}
+                    </div>
                     <p class="text-base">{{.Content}}</p>
                 </div>
             </div>

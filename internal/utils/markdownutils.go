@@ -39,6 +39,8 @@ func parseMarkdown(filename string) (Post, error) {
 		return Post{}, err
 	}
 
+	post.Slug = filepath.Base(filename[:len(filename)-len(filepath.Ext(filename))])
+
 	parser := article.NewParser()
 	out, err := parser.ParseBlog(part)
 	if err != nil {

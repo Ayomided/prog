@@ -10,7 +10,7 @@ type Config struct {
 
 func NewConfig() *Config {
 	return &Config{
-		Port: getEnv("PORT", "3030"),
+		Port: getEnv("PORT", "8080"),
 	}
 }
 

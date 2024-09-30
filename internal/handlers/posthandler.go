@@ -66,7 +66,7 @@ func PostHandler(sl SlugReader) http.HandlerFunc {
 			http.Error(w, "Error converting markdown", http.StatusInternalServerError)
 		}
 		post.Content = template.HTML(out)
-		tpl, err := template.ParseFiles("post.gohtml")
+		tpl, err := template.ParseFiles("templates/post.html")
 		if err != nil {
 			http.Error(w, "Error parsing template", http.StatusInternalServerError)
 			return
