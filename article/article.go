@@ -2,9 +2,6 @@ package article
 
 import (
 	"bytes"
-	"embed"
-	"fmt"
-	"strings"
 
 	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
 	"github.com/yuin/goldmark"
@@ -13,9 +10,6 @@ import (
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer/html"
 )
-
-//go:embed assets/*.md
-var Assets embed.FS
 
 type Parser struct {
 	markdown goldmark.Markdown
@@ -26,7 +20,7 @@ func NewParser() Parser {
 		goldmark.WithExtensions(
 			extension.GFM,
 			highlighting.NewHighlighting(
-				highlighting.WithStyle("catppuccin-mocha"),
+				highlighting.WithStyle("catppuccin-frappe"),
 				highlighting.WithFormatOptions(
 					chromahtml.WithLineNumbers(true),
 					chromahtml.TabWidth(4),
@@ -46,27 +40,11 @@ func NewParser() Parser {
 	return Parser{md}
 }
 
-func (p Parser) Parse(filename string) (string, error) {
-	file, err := Assets.ReadFile(fmt.Sprintf("assets/%v.md", filename))
-	if err != nil {
-		return "", err
-	}
+func (p Parser) ParseBlog(copy []byte) (string, error) {
+	text := []byte(copy)
 	var htmlOutput bytes.Buffer
-	if err := p.markdown.Convert(file, &htmlOutput); err != nil {
+	if err := p.markdown.Convert(text, &htmlOutput); err != nil {
 		return "", err
 	}
 	return htmlOutput.String(), nil
-}
-
-func GetAssets() ([]string, error) {
-	files, err := Assets.ReadDir(("assets"))
-	if err != nil {
-		return nil, err
-	}
-	var filenames []string
-	for _, f := range files {
-		file := strings.Split(f.Name(), ".")[0]
-		filenames = append(filenames, file)
-	}
-	return filenames, nil
 }

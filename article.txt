@@ -1,5 +1,0 @@
-- "Rapid Prototyping of AI Features with Vercel AI SDK and Next.js"
-- "Validating the Blackbox: Structured Outputs with Pydantic in Python"
-- "Crafting Beautiful Terminal UIs: A Deep Dive into Charm and Bubbletea"
-- "Starfeeds: RSS Aggregator in the star-studded language, Gleam"
-- "For what it's worth, Is it worth it?" - The current software market
