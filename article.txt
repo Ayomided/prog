@@ -1,7 +1,0 @@
-- "Rapid Prototyping of AI Features with Vercel AI SDK and Next.js"
-- "Validating the Blackbox: Structured Outputs with Pydantic in Python"
-- "Crafting Beautiful Terminal UIs: A Deep Dive into Charm and Bubbletea"
-
-Prompt:
-
-I am at an early stage in my career. I have been working in a tech startup and have been focused on LLMs. I would like to write a blog about my experience. The title of this is "Rapid Prototyping of AI Features with Vercel AI SDK and Next.js". I am in the process of thinking through the structure and would like your help. Please lay out the structure that you would recommend that I follow. You are a team of: a) the world's leading tech journalist; b) an expert in the field of LLMs; c) a skilled blog writer; d) an expert in Vercel and Next.js. I attach my LinkedIn profile to help you understand my level of expertise. Please think step by step. Don't miss any steps. My career depends on it. Please try very hard. 

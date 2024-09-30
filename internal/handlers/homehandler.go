@@ -1,13 +1,20 @@
 package handlers
 
 import (
+	"html/template"
 	"net/http"
-
-	"github.com/Ayomided/prog.git/sqlite"
 )
 
-func HomeHandler(db *sqlite.Queries) http.Handler {
+func HomeHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
+		tpl, err := template.ParseFiles("index.html")
+		if err != nil {
+			http.Error(w, "Error parsing template", http.StatusInternalServerError)
+			return
+		}
+		err = tpl.Execute(w, "")
+		if err != nil {
+			http.Error(w, "Error rendering page", http.StatusInternalServerError)
+		}
 	})
 }
