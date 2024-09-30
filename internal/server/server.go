@@ -1,6 +1,7 @@
 package server
 
 import (
+	"io/fs"
 	"log"
 	"net/http"
 
@@ -9,11 +10,11 @@ import (
 	"github.com/Ayomided/prog/internal/middleware"
 )
 
-func Run(cfg *config.Config) error {
+func Run(cfg *config.Config, posts, templates fs.FS) error {
 	mux := http.NewServeMux()
-	mux.Handle("GET /", handlers.HomeHandler())
-	mux.Handle("GET /about", handlers.AboutHandler())
-	mux.Handle("GET /posts/{slug}", handlers.PostHandler(handlers.FileReader{}))
+	mux.Handle("GET /", handlers.HomeHandler(templates))
+	mux.Handle("GET /about", handlers.AboutHandler(templates))
+	mux.Handle("GET /posts/{slug}", handlers.PostHandler(handlers.FileReader{}, posts, templates))
 	mux.Handle("GET /rss", handlers.RssHandler())
 
 	loggedMux := middleware.Logging(mux)

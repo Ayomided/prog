@@ -3,8 +3,8 @@ package handlers
 import (
 	"html/template"
 	"io"
+	"io/fs"
 	"net/http"
-	"os"
 	"strings"
 	"time"
 
@@ -26,13 +26,13 @@ type Author struct {
 }
 
 type SlugReader interface {
-	Read(slug string) (string, error)
+	Read(posts fs.FS, slug string) (string, error)
 }
 
 type FileReader struct{}
 
-func (fsr FileReader) Read(slug string) (string, error) {
-	f, err := os.Open("posts/" + slug + ".md")
+func (fsr FileReader) Read(posts fs.FS, slug string) (string, error) {
+	f, err := posts.Open("posts/" + slug + ".md")
 	if err != nil {
 		return "", err
 	}
@@ -44,11 +44,11 @@ func (fsr FileReader) Read(slug string) (string, error) {
 	return string(b), nil
 }
 
-func PostHandler(sl SlugReader) http.HandlerFunc {
+func PostHandler(sl SlugReader, posts, path fs.FS) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var post Post
 		post.Slug = r.PathValue("slug")
-		markdownText, err := sl.Read(post.Slug)
+		markdownText, err := sl.Read(posts, post.Slug)
 		if err != nil {
 			http.Error(w, "Post not found", http.StatusNotFound)
 			return
@@ -66,7 +66,7 @@ func PostHandler(sl SlugReader) http.HandlerFunc {
 			http.Error(w, "Error converting markdown", http.StatusInternalServerError)
 		}
 		post.Content = template.HTML(out)
-		tpl, err := template.ParseFiles("templates/post.html")
+		tpl, err := template.ParseFS(path, "templates/post.html")
 		if err != nil {
 			http.Error(w, "Error parsing template", http.StatusInternalServerError)
 			return
