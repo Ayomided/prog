@@ -4,9 +4,7 @@ import (
 	"database/sql"
 	"embed"
 	"fmt"
-	"io/fs"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/Ayomided/prog.git/article"
@@ -30,7 +28,7 @@ func RssHandler(ctx echo.Context, db *sqlite.Queries) error {
 	feed := &feeds.Feed{
 		Title:       "David Adediji | blog",
 		Link:        &feeds.Link{Href: "https://prog.fly.dev"},
-		Description: "Discussing",
+		Description: "Hello! I am David, I share my thoughts here",
 		Author:      &feeds.Author{Name: "David Adediji", Email: "idavid.adediji@gmail.com"},
 		Created:     time.Now(),
 	}
@@ -93,53 +91,53 @@ func AboutHandler(ctx echo.Context, db *sqlite.Queries) error {
 	return views.About(projects).Render(ctx.Request().Context(), ctx.Response())
 }
 
-func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
-	dbConnection := setupDatabaseConnection()
+// func main() {
+// 	port := os.Getenv("PORT")
+// 	if port == "" {
+// 		port = "8080"
+// 	}
+// 	dbConnection := setupDatabaseConnection()
 
-	db := sqlite.New(dbConnection)
+// 	db := sqlite.New(dbConnection)
 
-	e := echo.New()
+// 	e := echo.New()
 
-	parser := article.NewParser()
+// 	parser := article.NewParser()
 
-	if _, err := os.Stat("article/assets/images"); err == nil {
-		// Local development: serve files from the filesystem
-		e.Static("/images", "article/assets/images")
-	} else {
-		// Production: serve files from the embedded filesystem
-		fsys, err := fs.Sub(staticFiles, "article/assets/images")
-		if err != nil {
-			e.Logger.Fatal(err)
-		}
-		assetHandler := http.FileServer(http.FS(fsys))
-		e.GET("/images/*", echo.WrapHandler(http.StripPrefix("/images/", assetHandler)))
-	}
+// 	if _, err := os.Stat("article/assets/images"); err == nil {
+// 		// Local development: serve files from the filesystem
+// 		e.Static("/images", "article/assets/images")
+// 	} else {
+// 		// Production: serve files from the embedded filesystem
+// 		fsys, err := fs.Sub(staticFiles, "article/assets/images")
+// 		if err != nil {
+// 			e.Logger.Fatal(err)
+// 		}
+// 		assetHandler := http.FileServer(http.FS(fsys))
+// 		e.GET("/images/*", echo.WrapHandler(http.StripPrefix("/images/", assetHandler)))
+// 	}
 
-	e.GET("/", func(c echo.Context) error {
-		return HomeHandler(c, db)
-	})
-	e.GET("/feed", func(c echo.Context) error {
-		return RssHandler(c, db)
-	})
-	e.GET("/articles", func(c echo.Context) error {
-		return ArticleListHandler(c, db)
-	})
-	e.GET("/about", func(c echo.Context) error {
-		return AboutHandler(c, db)
-	})
-	e.GET("/articles/:slug", func(c echo.Context) error {
-		return ArticleHandler(c, db, parser)
-	})
-	e.GET("/resume", func(c echo.Context) error {
-		return c.Attachment("article/assets/resume/DAVIDADEDIJI-CV.pdf", "DAVIDADEDIJI-CV.pdf")
-	})
+// 	e.GET("/", func(c echo.Context) error {
+// 		return HomeHandler(c, db)
+// 	})
+// 	e.GET("/feed", func(c echo.Context) error {
+// 		return RssHandler(c, db)
+// 	})
+// 	e.GET("/articles", func(c echo.Context) error {
+// 		return ArticleListHandler(c, db)
+// 	})
+// 	e.GET("/about", func(c echo.Context) error {
+// 		return AboutHandler(c, db)
+// 	})
+// 	e.GET("/articles/:slug", func(c echo.Context) error {
+// 		return ArticleHandler(c, db, parser)
+// 	})
+// 	e.GET("/resume", func(c echo.Context) error {
+// 		return c.Attachment("article/assets/resume/DAVIDADEDIJI-CV.pdf", "DAVIDADEDIJI-CV.pdf")
+// 	})
 
-	e.Logger.Fatal(e, e.Start(":"+port))
-}
+// 	e.Logger.Fatal(e, e.Start(":"+port))
+// }
 
 const (
 	dbPath = "data/blog.db"

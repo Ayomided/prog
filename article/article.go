@@ -58,6 +58,15 @@ func (p Parser) Parse(filename string) (string, error) {
 	return htmlOutput.String(), nil
 }
 
+func (p Parser) ParseBlog(copy []byte) (string, error) {
+	text := []byte(copy)
+	var htmlOutput bytes.Buffer
+	if err := p.markdown.Convert(text, &htmlOutput); err != nil {
+		return "", err
+	}
+	return htmlOutput.String(), nil
+}
+
 func GetAssets() ([]string, error) {
 	files, err := Assets.ReadDir(("assets"))
 	if err != nil {

@@ -10,13 +10,13 @@ templ ArticleList(articles []sqlite.Article) {
 		<div class="max-w-2xl mx-auto px-4 py-8">
 			<h1 class="text-2xl font-bold text-gray-800 mb-6">Blog Posts</h1>
 			<ul class="space-y-4 list-disc list-inside">
-				for _, article := range articles {
+				for i := len(articles)-1; i >= 0; i-- {
 					<li>
-						<a href={ templ.URL(fmt.Sprintf("articles/%v", article.Slug)) } class="text-blue-600 hover:underline">
-							{ article.Title }
+						<a href={ templ.URL(fmt.Sprintf("articles/%v", articles[i].Slug)) } class="text-blue-600 hover:underline">
+							{ articles[i].Title }
 						</a>
 						<span class="text-sm text-gray-500 ml-2">
-							{ article.UpdatedAt.String() }
+							{ articles[i].UpdatedAt.String() }
 						</span>
 					</li>
 				}

@@ -47,12 +47,12 @@ func Home(articles []sqlite.Article) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			for _, article := range articles {
+			for i := len(articles) - 1; i >= 0; i-- {
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<a href=\"")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				var templ_7745c5c3_Var3 templ.SafeURL = templ.URL(fmt.Sprintf("articles/%v", article.Slug))
+				var templ_7745c5c3_Var3 templ.SafeURL = templ.URL(fmt.Sprintf("articles/%v", articles[i].Slug))
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var3)))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -62,9 +62,9 @@ func Home(articles []sqlite.Article) templ.Component {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var4 string
-				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(article.Title)
+				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(articles[i].Title)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 16, Col: 90}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 16, Col: 94}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -75,9 +75,9 @@ func Home(articles []sqlite.Article) templ.Component {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var5 string
-				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(article.CreatedAt.Format(" 1, 2006"))
+				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(articles[i].CreatedAt.Format(" 1, 2006"))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 17, Col: 51}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 17, Col: 55}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -88,7 +88,7 @@ func Home(articles []sqlite.Article) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><p class=\"text-gray-500 my-6\">Existing physically: Some events and highlights</p><div class=\"container max-w-3xl h-48\"><div class=\"grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4\"><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"http://localhost:8080/images/atDojo.jpeg\" alt=\"at_dojo_event\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">Dojo Inclusiveness event</span></div><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"http://localhost:8080/images/bus.jpeg\" alt=\"London Red Bus\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">On the road again</span></div><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"http://localhost:8080/images/stpaul.jpeg\" alt=\"St Paul Cathedral\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">St Paul Cathedral</span></div><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"http://localhost:8080/images/college.jpeg\" alt=\"Birkeck University of London\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">College building at Birkbeck, UoL</span></div></div></div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><p class=\"text-gray-500 my-6\">Existing physically: Some events and highlights</p><div class=\"container max-w-3xl h-48\"><div class=\"grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4\"><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"http://localhost:8080/gartner-byp.jpeg\" alt=\"at gartner stand\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">At Gartner stand at BYP</span></div><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"https://prog.fly.dev/images/atDojo.jpeg\" alt=\"at_dojo_event\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">Dojo Inclusiveness event</span></div><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"https://prog.fly.dev/images/bus.jpeg\" alt=\"London Red Bus\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">On the road again</span></div><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"https://prog.fly.dev/images/stpaul.jpeg\" alt=\"St Paul Cathedral\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">St Paul Cathedral</span></div><div class=\"max-w-sm group\"><img class=\"object-contain rounded-lg\" src=\"https://prog.fly.dev/images/college.jpeg\" alt=\"Birkeck University of London\"> <span class=\"transition-all underline decoration-wavy text-sm text-gray-400 transform translate-y-8 pt-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0\">College building at Birkbeck, UoL</span></div></div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
