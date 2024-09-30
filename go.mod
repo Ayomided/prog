@@ -6,7 +6,6 @@ require (
 	github.com/adrg/frontmatter v0.2.0
 	github.com/alecthomas/chroma/v2 v2.2.0
 	github.com/gorilla/feeds v1.2.0
-	github.com/mattn/go-sqlite3 v1.14.22
 	github.com/yuin/goldmark v1.7.4
 	github.com/yuin/goldmark-highlighting/v2 v2.0.0-20230729083705-37449abec8cc
 )
