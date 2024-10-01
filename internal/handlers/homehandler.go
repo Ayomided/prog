@@ -8,9 +8,9 @@ import (
 	"github.com/Ayomided/prog/internal/utils"
 )
 
-func HomeHandler(templatesFS fs.FS) http.Handler {
+func HomeHandler(postFS, templatesFS fs.FS) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		articles, err := utils.GetAllArticles("./posts")
+		articles, err := utils.GetAllArticles(postFS)
 		if err != nil {
 			http.Error(w, "Error getting posts", http.StatusInternalServerError)
 			return

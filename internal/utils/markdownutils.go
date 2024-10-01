@@ -3,7 +3,6 @@ package utils
 import (
 	"html/template"
 	"io/fs"
-	"os"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -27,8 +26,8 @@ type Author struct {
 	Email string `toml:"email"`
 }
 
-func parseMarkdown(filename string) (Post, error) {
-	content, err := os.ReadFile(filename)
+func parseMarkdown(postsFS fs.FS, filename string) (Post, error) {
+	content, err := fs.ReadFile(postsFS, filename)
 	if err != nil {
 		return Post{}, err
 	}
@@ -51,15 +50,15 @@ func parseMarkdown(filename string) (Post, error) {
 	return post, nil
 }
 
-func GetAllArticles(dir string) ([]Post, error) {
+func GetAllArticles(postsFS fs.FS) ([]Post, error) {
 	var posts []Post
 
-	err := filepath.Walk(dir, func(path string, info fs.FileInfo, err error) error {
+	err := fs.WalkDir(postsFS, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
-		if filepath.Ext(path) == ".md" {
-			post, err := parseMarkdown(path)
+		if !d.IsDir() && filepath.Ext(path) == ".md" {
+			post, err := parseMarkdown(postsFS, path)
 			if err != nil {
 				return err
 			}

@@ -20,10 +20,10 @@ func Run(cfg *config.Config, posts, templates fs.FS) error {
 		return err
 	}
 	mux := http.NewServeMux()
-	mux.Handle("GET /", handlers.HomeHandler(templatesFS))
+	mux.Handle("GET /", handlers.HomeHandler(postsFS, templatesFS))
 	mux.Handle("GET /about", handlers.AboutHandler(templatesFS))
 	mux.Handle("GET /posts/{slug}", handlers.PostHandler(handlers.FileReader{}, postsFS, templatesFS))
-	mux.Handle("GET /rss", handlers.RssHandler())
+	mux.Handle("GET /rss", handlers.RssHandler(postsFS))
 
 	loggedMux := middleware.Logging(mux)
 	corsLoggedMux := middleware.SetupCORS(loggedMux)

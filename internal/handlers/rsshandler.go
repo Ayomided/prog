@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"fmt"
+	"io/fs"
 	"net/http"
 	"time"
 
@@ -9,7 +10,7 @@ import (
 	"github.com/gorilla/feeds"
 )
 
-func RssHandler() http.HandlerFunc {
+func RssHandler(postFS fs.FS) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		feed := &feeds.Feed{
 			Title:       "David Adediji | blog",
@@ -19,7 +20,7 @@ func RssHandler() http.HandlerFunc {
 			Created:     time.Now(),
 		}
 
-		articles, err := utils.GetAllArticles("./posts")
+		articles, err := utils.GetAllArticles(postFS)
 		if err != nil {
 			http.Error(w, "Error getting posts", http.StatusInternalServerError)
 			return
