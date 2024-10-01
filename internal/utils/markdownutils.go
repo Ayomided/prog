@@ -14,11 +14,12 @@ import (
 )
 
 type Post struct {
-	Title   string `toml:"title"`
-	Slug    string `toml:"slug"`
-	Content template.HTML
-	Date    time.Time `yaml:"date"`
-	Author  Author    `toml:"author"`
+	Title       string `toml:"title"`
+	Slug        string `toml:"slug"`
+	Content     template.HTML
+	Date        time.Time `yaml:"date"`
+	Author      Author    `toml:"author"`
+	Description string    `toml:"description"`
 }
 
 type Author struct {

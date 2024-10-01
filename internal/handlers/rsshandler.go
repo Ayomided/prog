@@ -32,8 +32,10 @@ func RssHandler(postFS fs.FS) http.HandlerFunc {
 				&feeds.Item{
 					Id:      fmt.Sprintf("tag: %v, %v:/articles/%v", time.Now().Year(), article.Date, article.Slug),
 					Title:   article.Title,
-					Link:    &feeds.Link{Href: fmt.Sprintf("https://prog.fly.dev/articles/%v", article.Slug)},
+					Author:  (*feeds.Author)(&article.Author),
+					Link:    &feeds.Link{Href: fmt.Sprintf("https://prog.fly.dev/posts/%v", article.Slug)},
 					Created: article.Date,
+					Content: article.Description,
 				})
 		}
 		feed.Items = feedItems
