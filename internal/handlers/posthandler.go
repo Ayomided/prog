@@ -32,7 +32,7 @@ type SlugReader interface {
 type FileReader struct{}
 
 func (fsr FileReader) Read(posts fs.FS, slug string) (string, error) {
-	f, err := posts.Open("posts/" + slug + ".md")
+	f, err := posts.Open(slug + ".md")
 	if err != nil {
 		return "", err
 	}
@@ -44,7 +44,7 @@ func (fsr FileReader) Read(posts fs.FS, slug string) (string, error) {
 	return string(b), nil
 }
 
-func PostHandler(sl SlugReader, posts, path fs.FS) http.HandlerFunc {
+func PostHandler(sl SlugReader, posts, templatesFS fs.FS) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var post Post
 		post.Slug = r.PathValue("slug")
@@ -66,7 +66,7 @@ func PostHandler(sl SlugReader, posts, path fs.FS) http.HandlerFunc {
 			http.Error(w, "Error converting markdown", http.StatusInternalServerError)
 		}
 		post.Content = template.HTML(out)
-		tpl, err := template.ParseFS(path, "templates/post.html")
+		tpl, err := template.ParseFS(templatesFS, "post.html")
 		if err != nil {
 			http.Error(w, "Error parsing template", http.StatusInternalServerError)
 			return

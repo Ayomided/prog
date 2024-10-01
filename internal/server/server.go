@@ -11,10 +11,18 @@ import (
 )
 
 func Run(cfg *config.Config, posts, templates fs.FS) error {
+	templatesFS, err := fs.Sub(templates, "templates")
+	if err != nil {
+		return err
+	}
+	postsFS, err := fs.Sub(posts, "posts")
+	if err != nil {
+		return err
+	}
 	mux := http.NewServeMux()
-	mux.Handle("GET /", handlers.HomeHandler(templates))
-	mux.Handle("GET /about", handlers.AboutHandler(templates))
-	mux.Handle("GET /posts/{slug}", handlers.PostHandler(handlers.FileReader{}, posts, templates))
+	mux.Handle("GET /", handlers.HomeHandler(templatesFS))
+	mux.Handle("GET /about", handlers.AboutHandler(templatesFS))
+	mux.Handle("GET /posts/{slug}", handlers.PostHandler(handlers.FileReader{}, postsFS, templatesFS))
 	mux.Handle("GET /rss", handlers.RssHandler())
 
 	loggedMux := middleware.Logging(mux)

@@ -1,5 +1,5 @@
 ARG GO_VERSION=1
-FROM golang:${GO_VERSION}-bookworm as builder
+FROM golang:${GO_VERSION}-bookworm AS builder
 
 RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev
 WORKDIR /usr/src/app

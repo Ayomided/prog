@@ -6,9 +6,9 @@ import (
 	"net/http"
 )
 
-func AboutHandler(path fs.FS) http.Handler {
+func AboutHandler(templatesFS fs.FS) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		tpl, err := template.ParseFS(path, "templates/about.html")
+		tpl, err := template.ParseFS(templatesFS, "about.html")
 		if err != nil {
 			http.Error(w, "Error parsing template", http.StatusInternalServerError)
 			return
