@@ -13,7 +13,7 @@ import (
 func RssHandler(postFS fs.FS) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		feed := &feeds.Feed{
-			Title:       "David Adediji | blog",
+			Title:       "David Adediji | Blog",
 			Link:        &feeds.Link{Href: "https://prog.fly.dev"},
 			Description: "Hello! I am David, I share my thoughts here",
 			Author:      &feeds.Author{Name: "David Adediji", Email: "idavid.adediji@gmail.com"},
