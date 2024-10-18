@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"html/template"
 	"io"
 	"io/fs"
@@ -9,15 +10,18 @@ import (
 	"time"
 
 	"github.com/Ayomided/prog/article"
+	"github.com/Ayomided/prog/internal/utils"
 	"github.com/adrg/frontmatter"
 )
 
 type Post struct {
-	Title   string `toml:"title"`
-	Slug    string `toml:"slug"`
-	Content template.HTML
-	Date    time.Time `yaml:"date"`
-	Author  Author    `toml:"author"`
+	Title       string `toml:"title"`
+	Slug        string `toml:"slug"`
+	Content     template.HTML
+	OGMeta      template.HTML
+	Date        time.Time `toml:"date"`
+	Author      Author    `toml:"author"`
+	Description string    `toml:"description"`
 }
 
 type Author struct {
@@ -42,6 +46,14 @@ func (fsr FileReader) Read(posts fs.FS, slug string) (string, error) {
 		return "", err
 	}
 	return string(b), nil
+}
+
+func getFullURL(r *http.Request) string {
+	scheme := "http"
+	if r.TLS != nil || r.Header.Get("X-Forwarded-Proto") == "https" {
+		scheme = "https"
+	}
+	return fmt.Sprintf("%s://%s%s", scheme, r.Host, r.URL.RequestURI())
 }
 
 func PostHandler(sl SlugReader, posts, templatesFS fs.FS) http.HandlerFunc {
@@ -71,6 +83,15 @@ func PostHandler(sl SlugReader, posts, templatesFS fs.FS) http.HandlerFunc {
 			http.Error(w, "Error parsing template", http.StatusInternalServerError)
 			return
 		}
+		uri := getFullURL(r)
+		og, err := utils.NewMetaOg(post.Title, "example.com/image.png", uri, post.Description, "website", "Pika Pika")
+		if err != nil {
+			http.Error(w, "Error generating Open Graph tags", http.StatusInternalServerError)
+			return
+		}
+		metaTags, _ := og.GenerateMetaOg()
+		post.OGMeta = template.HTML(metaTags)
+
 		err = tpl.Execute(w, post)
 	}
 }
