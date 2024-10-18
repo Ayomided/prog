@@ -1,6 +1,6 @@
 +++
 title = "Everyone says this bubble would pop any time now"
-description = "And it doesn't pop what do we do?"
+description = "And if it doesn't pop what do we do?"
 date = 2024-09-30
 
 [author]
