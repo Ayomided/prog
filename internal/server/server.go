@@ -1,9 +1,13 @@
 package server
 
 import (
+	"context"
 	"io/fs"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/Ayomided/prog/internal/config"
 	"github.com/Ayomided/prog/internal/handlers"
@@ -11,6 +15,7 @@ import (
 )
 
 func Run(cfg *config.Config, posts, templates fs.FS) error {
+	var stopChan chan os.Signal
 	templatesFS, err := fs.Sub(templates, "templates")
 	if err != nil {
 		return err
@@ -24,10 +29,33 @@ func Run(cfg *config.Config, posts, templates fs.FS) error {
 	mux.Handle("GET /about", handlers.AboutHandler(templatesFS))
 	mux.Handle("GET /posts/{slug}", handlers.PostHandler(handlers.FileReader{}, postsFS, templatesFS))
 	mux.Handle("GET /rss", handlers.RssHandler(postsFS))
+	mux.Handle("GET /robots.txt", http.NotFoundHandler())
 
 	loggedMux := middleware.Logging(mux)
 	corsLoggedMux := middleware.SetupCORS(loggedMux)
 
 	log.Printf("Starting server on :%s\n", cfg.Port)
-	return http.ListenAndServe(":"+cfg.Port, corsLoggedMux)
+
+	srv := &http.Server{
+		Addr:    ":" + cfg.Port,
+		Handler: corsLoggedMux,
+	}
+
+	// create channel to listen for signals
+	stopChan = make(chan os.Signal, 1)
+	signal.Notify(stopChan, os.Interrupt, syscall.SIGTERM)
+
+	go func() {
+		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			log.Fatalf("Error when running server: %s", err)
+		}
+	}()
+
+	<-stopChan
+
+	if err := srv.Shutdown(context.Background()); err != nil {
+		log.Fatalf("Error when shutting down server: %v", err)
+		return err
+	}
+	return nil
 }
