@@ -17,7 +17,7 @@ type Post struct {
 	Title       string `toml:"title"`
 	Slug        string `toml:"slug"`
 	Content     template.HTML
-	Date        time.Time `yaml:"date"`
+	Date        time.Time `toml:"date"`
 	Author      Author    `toml:"author"`
 	Description string    `toml:"description"`
 }
