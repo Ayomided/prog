@@ -24,7 +24,7 @@ type Home struct {
 func main() {
 	cfg := config.NewConfig()
 	if err := utils.GenerateSitemap(cfg); err != nil {
-		panic(err)
+		log.Fatalf("could not generate sitemap: %v", err)
 	}
 	if err := server.Run(cfg, posts, templates); err != nil {
 		log.Fatalf("could not run the server: %v", err)
