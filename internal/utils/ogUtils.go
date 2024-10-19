@@ -59,6 +59,11 @@ func (og *OG) GenerateMetaOg() ([]byte, error) {
 	<meta property="og:type" content="{{.Type}}">
 	<meta property="og:site_name" content="{{.SiteName}}">
 	<meta property="og:logo" content="https://adediiji.uk/static/og-images/logo.png">
+	<meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:title" content="{{.Title}}"/>
+	<meta name="twitter:description" content="{{.Description}}"/>
+	<meta name="twitter:image" content="https://adediiji.uk{{ .Image }}"/>
+	<meta name="twitter:site" content="@ofisudad"/>
 	`
 	} else {
 		tmpl = `
@@ -69,6 +74,11 @@ func (og *OG) GenerateMetaOg() ([]byte, error) {
 	<meta property="og:type" content="{{.Type}}">
 	<meta property="og:site_name" content="{{.SiteName}}">
 	<meta property="og:logo" content="https://adediiji.uk/static/og-images/logo.png">
+	<meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:title" content="{{.Title}}"/>
+	<meta name="twitter:description" content="{{.Description}}"/>
+	<meta name="twitter:image" content="https://adediiji.uk/static/og-images/{{ .RelativeUrl }}.png"/>
+	<meta name="twitter:site" content="@Ofisudad"/>
 	`
 	}
 
