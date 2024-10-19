@@ -24,9 +24,13 @@ func Run(cfg *config.Config, posts, templates fs.FS) error {
 	if err != nil {
 		return err
 	}
+	fileServer := http.FileServer(http.Dir("static"))
+
 	mux := http.NewServeMux()
+	mux.Handle("GET /static/", http.StripPrefix("/static/", fileServer))
 	mux.Handle("GET /", handlers.HomeHandler(postsFS, templatesFS))
 	mux.Handle("GET /about", handlers.AboutHandler(templatesFS))
+	mux.Handle("GET /og-image/{path}", handlers.OGImageHandler(handlers.FileReader{}, postsFS))
 	mux.Handle("GET /posts/{slug}", handlers.PostHandler(handlers.FileReader{}, postsFS, templatesFS))
 	mux.Handle("GET /rss", handlers.RssHandler(postsFS))
 	mux.Handle("GET /robots.txt", http.NotFoundHandler())
