@@ -1,0 +1,97 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 4">
+<rect id="BG" width="1200" height="630" fill="#FAFAFA"/>
+<path id="Union" d="M527.49 158H943.112V312.545H719.734C686.596 312.545 659.734 339.408 659.734 372.545V458H244.112V303.455H467.49C500.627 303.455 527.49 276.592 527.49 243.455V158Z" fill="#EFEFEF"/>
+<g id="PillDate" filter="url(#filter0_d_1_116)">
+<rect width="354" height="99" rx="40" transform="matrix(-1 0 0 1 912.112 186)" fill="white"/>
+</g>
+<g id="PillPost" filter="url(#filter1_d_1_116)">
+<rect width="353" height="99" rx="40" transform="matrix(-1 0 0 1 628.112 331)" fill="white"/>
+</g>
+<g id="Group 2">
+<path id="Vector 1" d="M997.738 311.526H719.744C686.606 311.526 659.743 338.389 659.743 371.526V500.467" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 2" d="M213.283 302.429H467.485C500.622 302.429 527.485 275.566 527.485 242.429V133.082" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 3" d="M987.591 158.274H942.455V311.526H1043.22" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 6" d="M192.639 302.429H244.773V455.681H158" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 4" d="M942.455 102.874V158.274H527.485V75" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 5" d="M659.744 555.167V457.781H244.773V499.068" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text id="Post Title" fill="#1E1E1E" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="32" font-weight="bold" letter-spacing="0em"><tspan x="308" y="392.136">%s</tspan></text>
+<text id="Description" fill="#5A5959" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="24" font-weight="500" letter-spacing="0em"><tspan x="707" y="368.227">%s</tspan></text>
+<g id="Posted on 10/11/12">
+<text fill="#1E1E1E" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="24" font-weight="500" letter-spacing="0em"><tspan x="643" y="244.227">Posted on </tspan></text>
+<text fill="#9A9A9A" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="24" font-weight="500" letter-spacing="0em"><tspan x="764.922" y="244.227">%s</tspan></text>
+</g>
+<text id="David Adediji" fill="#A4A2A2" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="32" font-weight="500" letter-spacing="0em"><tspan x="952" y="557.136">David Adediji</tspan></text>
+<text id="Software Engineer" fill="#A4A2A2" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="953" y="582.318">Software Engineer</tspan></text>
+<text id="adediiji.uk" fill="black" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="51" y="82.5">adediiji.uk</tspan></text>
+<g id="3DIcon">
+<g id="Frame" clip-path="url(#clip0_1_116)">
+<path id="Vector" d="M169.5 85.7333L165.667 83.625V78.8333" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M165.667 71.1667V66.375L169.5 64.2667" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M177.167 59.8583L181 57.75L184.833 59.8583" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M192.5 64.2667L196.333 66.375V71.1667" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M196.333 78.8333V83.625L192.5 85.7717" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_6" d="M184.833 90.1417L181 92.25L177.167 90.1417" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_7" d="M181 75L184.833 72.8917" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_8" d="M192.5 68.4833L196.333 66.375" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_9" d="M181 75V79.7917" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_10" d="M181 87.4583V92.25" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_11" d="M181 75L177.167 72.8533" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_12" d="M169.5 68.4833L165.667 66.375" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<g id="ChairIcon">
+<g id="Frame_2" clip-path="url(#clip1_1_116)">
+<path id="Vector_13" d="M567.167 377.333V370C567.167 368.541 567.746 367.142 568.778 366.111C569.809 365.079 571.208 364.5 572.667 364.5H587.333C588.792 364.5 590.191 365.079 591.222 366.111C592.254 367.142 592.833 368.541 592.833 370V377.333" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_14" d="M587.333 386.5V382.833C587.333 381.746 587.656 380.682 588.26 379.778C588.865 378.873 589.724 378.168 590.729 377.752C591.734 377.336 592.839 377.227 593.906 377.439C594.973 377.651 595.953 378.175 596.722 378.944C597.492 379.713 598.015 380.693 598.228 381.76C598.44 382.827 598.331 383.933 597.915 384.938C597.498 385.943 596.793 386.802 595.889 387.406C594.985 388.011 593.921 388.333 592.833 388.333V393.833H567.167V388.333C566.079 388.333 565.016 388.011 564.111 387.406C563.207 386.802 562.502 385.943 562.085 384.938C561.669 383.933 561.56 382.827 561.772 381.76C561.985 380.693 562.508 379.713 563.278 378.944C564.047 378.175 565.027 377.651 566.094 377.439C567.161 377.227 568.266 377.336 569.271 377.752C570.276 378.168 571.135 378.873 571.74 379.778C572.344 380.682 572.667 381.746 572.667 382.833V386.5" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_15" d="M572.667 381H587.333" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_16" d="M570.833 393.833V397.5" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_17" d="M589.167 393.833V397.5" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<g id="Timeline">
+<g id="Frame_3" clip-path="url(#clip2_1_116)">
+<path id="Vector_18" d="M598.333 250.667C598.333 251.639 598.72 252.572 599.407 253.259C600.095 253.947 601.028 254.333 602 254.333C602.972 254.333 603.905 253.947 604.593 253.259C605.28 252.572 605.667 251.639 605.667 250.667C605.667 249.694 605.28 248.762 604.593 248.074C603.905 247.386 602.972 247 602 247C601.028 247 600.095 247.386 599.407 248.074C598.72 248.762 598.333 249.694 598.333 250.667Z" stroke="#2C3E50" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_19" d="M598.333 250.667H587.333" stroke="#2C3E50" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_20" d="M605.667 250.667H616.667" stroke="#2C3E50" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_21" d="M602 241.5L598.333 237.833H592.833C592.347 237.833 591.881 237.64 591.537 237.296C591.193 236.953 591 236.486 591 236V221.333C591 220.847 591.193 220.381 591.537 220.037C591.881 219.693 592.347 219.5 592.833 219.5H611.167C611.653 219.5 612.119 219.693 612.463 220.037C612.807 220.381 613 220.847 613 221.333V236C613 236.486 612.807 236.953 612.463 237.296C612.119 237.64 611.653 237.833 611.167 237.833H605.667L602 241.5Z" stroke="#2C3E50" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_22" d="M598.333 228.667H605.667" stroke="#2C3E50" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_23" d="M602 225V232.333" stroke="#2C3E50" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_1_116" x="535.512" y="165.4" width="399.2" height="144.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_1_116"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="10.3"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_116"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_116" result="shape"/>
+</filter>
+<filter id="filter1_d_1_116" x="252.512" y="310.4" width="398.2" height="144.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_1_116"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="10.3"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_116"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_116" result="shape"/>
+</filter>
+<clipPath id="clip0_1_116">
+<rect width="46" height="46" fill="white" transform="translate(158 52)"/>
+</clipPath>
+<clipPath id="clip1_1_116">
+<rect width="44" height="44" fill="white" transform="translate(558 359)"/>
+</clipPath>
+<clipPath id="clip2_1_116">
+<rect width="44" height="44" fill="white" transform="translate(580 214)"/>
+</clipPath>
+</defs>
+</svg>
