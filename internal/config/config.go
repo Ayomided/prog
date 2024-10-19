@@ -9,6 +9,8 @@ type Config struct {
 	StaticPath   string
 	PostsPath    string
 	StaticPathOG string
+	Sitemap      string
+	Robots       string
 }
 
 func NewConfig() *Config {
@@ -17,6 +19,8 @@ func NewConfig() *Config {
 		StaticPath:   getEnv("STATIC", "static"),
 		PostsPath:    getEnv("POSTPATH", "posts"),
 		StaticPathOG: getEnv("STATICOG", "static/og-images"),
+		Sitemap:      getEnv("SITEMAP", "static/sitemap.xml"),
+		Robots:       getEnv("ROBOTS", "static/robots.txt"),
 	}
 }
 

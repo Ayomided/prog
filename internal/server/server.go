@@ -49,11 +49,11 @@ func Run(cfg *config.Config, posts, templates fs.FS) error {
 	})
 	mux.HandleFunc("GET /sitemap.xml", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/xml")
-		http.ServeFile(w, r, "static/sitemap.xml")
+		http.ServeFile(w, r, cfg.Sitemap)
 	})
 	mux.HandleFunc("GET /robots.txt", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/txt")
-		http.ServeFile(w, r, "static/robots.txt")
+		http.ServeFile(w, r, cfg.Robots)
 	})
 	mux.Handle("GET /static/", http.StripPrefix("/static/", fileServer))
 	mux.Handle("GET /", handlers.HomeHandler(postsFS, templatesFS))

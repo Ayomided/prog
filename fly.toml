@@ -13,6 +13,8 @@ GO_VERSION = '1.23'
 [env]
 PORT = '8080'
 STATIC = '/usr/local/share/app/static'
+SITEMAP = '/usr/local/share/app/static/sitemap.xml'
+ROBOTS = '/usr/local/share/app/static/robots.txt'
 STATICOG = '/usr/local/share/app/static/og-images'
 POSTPATH = '/usr/local/share/app/posts/'
 
