@@ -12,6 +12,7 @@ GO_VERSION = '1.23'
 
 [env]
 PORT = '8080'
+STATIC = '/usr/local/share/app/static'
 
 [[mounts]]
 source = 'prog_data'

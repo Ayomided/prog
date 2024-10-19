@@ -24,7 +24,7 @@ func Run(cfg *config.Config, posts, templates fs.FS) error {
 	if err != nil {
 		return err
 	}
-	fileServer := http.FileServer(http.Dir("static"))
+	fileServer := http.FileServer(http.Dir(cfg.StaticPath))
 
 	mux := http.NewServeMux()
 	mux.Handle("GET /static/", http.StripPrefix("/static/", fileServer))
