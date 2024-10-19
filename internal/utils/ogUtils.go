@@ -54,7 +54,7 @@ func (og *OG) GenerateMetaOg() ([]byte, error) {
 		tmpl = `
 	<meta property="og:title" content="{{.Title}}">
 	<meta property="og:url" content="{{.Url}}">
-	<meta property="og:image" content="{{ .Image }}" />
+	<meta property="og:image" content="https://adediiji.uk{{ .Image }}" />
 	<meta property="og:description" content="{{.Description}}">
 	<meta property="og:type" content="{{.Type}}">
 	<meta property="og:site_name" content="{{.SiteName}}">
@@ -64,7 +64,7 @@ func (og *OG) GenerateMetaOg() ([]byte, error) {
 		tmpl = `
 	<meta property="og:title" content="{{.Title}}">
 	<meta property="og:url" content="{{.Url}}">
-	<meta property="og:image" content="/static/og-images/{{ .RelativeUrl }}.png" />
+	<meta property="og:image" content="https://adediiji.uk/static/og-images/{{ .RelativeUrl }}.png" />
 	<meta property="og:description" content="{{.Description}}">
 	<meta property="og:type" content="{{.Type}}">
 	<meta property="og:site_name" content="{{.SiteName}}">

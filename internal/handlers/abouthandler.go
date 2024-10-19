@@ -21,7 +21,7 @@ func AboutHandler(templatesFS fs.FS) http.Handler {
 			return
 		}
 		uri := getFullURL(r)
-		og, err := utils.NewMetaOg("David Adediji", "/static/og-images/home.png", uri, "David's Pika Pika", "website", "David Adediji")
+		og, err := utils.NewMetaOg("David Adediji", "/static/og-images/home.png", uri, "I am David a Software Engineer and I share my thoughts and experiments on here", "website", "David Adediji")
 		if err != nil {
 			http.Error(w, "Error generating Open Graph tags", http.StatusInternalServerError)
 			return
