@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /drafts/
+
+# Allow search engine crawlers
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Slurp
+Allow: /
+
+# Allow social media crawlers
+User-agent: Twitterbot
+User-agent: facebookexternalhit
+Allow: /
+
+# Sitemap
+Sitemap: https://adediiji.uk/sitemap.xml

@@ -47,13 +47,20 @@ func Run(cfg *config.Config, posts, templates fs.FS) error {
 
 		http.StripPrefix("/static/og-images/", fileServerOg).ServeHTTP(w, r)
 	})
+	mux.HandleFunc("GET /sitemap.xml", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/xml")
+		http.ServeFile(w, r, "static/sitemap.xml")
+	})
+	mux.HandleFunc("GET /robots.txt", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/txt")
+		http.ServeFile(w, r, "static/robots.txt")
+	})
 	mux.Handle("GET /static/", http.StripPrefix("/static/", fileServer))
 	mux.Handle("GET /", handlers.HomeHandler(postsFS, templatesFS))
 	mux.Handle("GET /about", handlers.AboutHandler(templatesFS))
 	mux.Handle("GET /og-image/{path}", handlers.OGImageHandler(handlers.FileReader{}, postsFS))
 	mux.Handle("GET /posts/{slug}", handlers.PostHandler(handlers.FileReader{}, postsFS, templatesFS))
 	mux.Handle("GET /rss", handlers.RssHandler(postsFS))
-	mux.Handle("GET /robots.txt", http.NotFoundHandler())
 
 	loggedMux := middleware.Logging(mux)
 	corsLoggedMux := middleware.SetupCORS(loggedMux)
