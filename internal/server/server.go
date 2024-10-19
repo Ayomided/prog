@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"syscall"
 
 	"github.com/Ayomided/prog/internal/config"
@@ -25,8 +26,27 @@ func Run(cfg *config.Config, posts, templates fs.FS) error {
 		return err
 	}
 	fileServer := http.FileServer(http.Dir(cfg.StaticPath))
+	fileServerOg := http.FileServer(http.Dir(cfg.StaticPathOG))
 
 	mux := http.NewServeMux()
+	mux.HandleFunc("GET /static/og-images/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Cache-Control", "public, max-age=86400")
+
+		ext := filepath.Ext(r.URL.Path)
+		switch ext {
+		case ".png":
+			w.Header().Set("Content-Type", "image/png")
+		case ".jpg", ".jpeg":
+			w.Header().Set("Content-Type", "image/jpeg")
+		case ".gif":
+			w.Header().Set("Content-Type", "image/gif")
+		default:
+			http.Error(w, "Unsupported file type", http.StatusUnsupportedMediaType)
+			return
+		}
+
+		http.StripPrefix("/static/og-images/", fileServerOg).ServeHTTP(w, r)
+	})
 	mux.Handle("GET /static/", http.StripPrefix("/static/", fileServer))
 	mux.Handle("GET /", handlers.HomeHandler(postsFS, templatesFS))
 	mux.Handle("GET /about", handlers.AboutHandler(templatesFS))

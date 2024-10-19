@@ -13,6 +13,7 @@ GO_VERSION = '1.23'
 [env]
 PORT = '8080'
 STATIC = '/usr/local/share/app/static'
+STATICOG = '/usr/local/share/app/static/og-images'
 
 [[mounts]]
 source = 'prog_data'

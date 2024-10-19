@@ -5,14 +5,16 @@ import (
 )
 
 type Config struct {
-	Port       string
-	StaticPath string
+	Port         string
+	StaticPath   string
+	StaticPathOG string
 }
 
 func NewConfig() *Config {
 	return &Config{
-		Port:       getEnv("PORT", "8080"),
-		StaticPath: getEnv("STATIC", "static"),
+		Port:         getEnv("PORT", "8080"),
+		StaticPath:   getEnv("STATIC", "static"),
+		StaticPathOG: getEnv("STATICOG", "static/og-images"),
 	}
 }
 
