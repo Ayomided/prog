@@ -6,6 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/Ayomided/prog/internal/config"
 )
 
 type Urlset struct {
@@ -21,9 +23,9 @@ type Url struct {
 	Priority   float32 `xml:"priority"`
 }
 
-func GenerateSitemap() error {
+func GenerateSitemap(cfg *config.Config) error {
 	baseURL := "https://adediiji.uk"
-	postsDir := "posts" // Adjust this to your posts directory
+	postsDir := cfg.PostsPath // Adjust this to your posts directory
 	staticPages := []string{"/", "/about"}
 
 	sitemap := Urlset{

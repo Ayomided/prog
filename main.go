@@ -22,10 +22,10 @@ type Home struct {
 }
 
 func main() {
-	if err := utils.GenerateSitemap(); err != nil {
+	cfg := config.NewConfig()
+	if err := utils.GenerateSitemap(cfg); err != nil {
 		panic(err)
 	}
-	cfg := config.NewConfig()
 	if err := server.Run(cfg, posts, templates); err != nil {
 		log.Fatalf("could not run the server: %v", err)
 	}
