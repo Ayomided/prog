@@ -1,26 +1,26 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Group 4">
+<g id="base">
 <rect id="BG" width="1200" height="630" fill="#FAFAFA"/>
-<path id="Union" d="M527.49 158H943.112V312.545H719.734C686.596 312.545 659.734 339.408 659.734 372.545V458H244.112V303.455H467.49C500.627 303.455 527.49 276.592 527.49 243.455V158Z" fill="#EFEFEF"/>
+<path id="Union" d="M527.49 158H943.112V312.545H719.734C686.596 312.545 659.734 339.408 659.734 372.545V516H451.923H244.112V303.455H467.49C500.627 303.455 527.49 276.592 527.49 243.455V158Z" fill="#EFEFEF"/>
 <g id="PillDate" filter="url(#filter0_d_1_116)">
 <rect width="354" height="99" rx="40" transform="matrix(-1 0 0 1 912.112 186)" fill="white"/>
 </g>
 <g id="PillPost" filter="url(#filter1_d_1_116)">
-<rect width="353" height="99" rx="40" transform="matrix(-1 0 0 1 628.112 331)" fill="white"/>
+<rect width="353" height="160" rx="40" transform="matrix(-1 0 0 1 628 331)" fill="white"/>
 </g>
 <g id="Group 2">
-<path id="Vector 1" d="M997.738 311.526H719.744C686.606 311.526 659.743 338.389 659.743 371.526V500.467" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 1" d="M998 312H720C686.863 312 660 338.863 660 372V516" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <path id="Vector 2" d="M213.283 302.429H467.485C500.622 302.429 527.485 275.566 527.485 242.429V133.082" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <path id="Vector 3" d="M987.591 158.274H942.455V311.526H1043.22" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector 6" d="M192.639 302.429H244.773V455.681H158" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 6" d="M192.73 302H245V516H158" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <path id="Vector 4" d="M942.455 102.874V158.274H527.485V75" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector 5" d="M659.744 555.167V457.781H244.773V499.068" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 5" d="M660 580V516H245V543.133" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<text id="Post Title" fill="#1E1E1E" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="32" font-weight="bold" letter-spacing="0em"><tspan x="308" y="392.136">%s</tspan></text>
-<text id="Description" fill="#5A5959" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="24" font-weight="500" letter-spacing="0em"><tspan x="707" y="368.227">%s</tspan></text>
-<g id="Posted on 10/11/12">
+<text id="Title" fill="#1E1E1E" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="19" font-weight="bold" letter-spacing="0em">%v</text>
+<text id="Description" fill="#5A5959" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="24" font-weight="500" letter-spacing="0em">%v</text>
+<g id="Date">
 <text fill="#1E1E1E" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="24" font-weight="500" letter-spacing="0em"><tspan x="643" y="244.227">Posted on </tspan></text>
-<text fill="#9A9A9A" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="24" font-weight="500" letter-spacing="0em"><tspan x="764.922" y="244.227">%s</tspan></text>
+<text fill="#9A9A9A" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="24" font-weight="500" letter-spacing="0em"><tspan x="764.922" y="244.227">%v</tspan></text>
 </g>
 <text id="David Adediji" fill="#A4A2A2" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="32" font-weight="500" letter-spacing="0em"><tspan x="952" y="557.136">David Adediji</tspan></text>
 <text id="Software Engineer" fill="#A4A2A2" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="953" y="582.318">Software Engineer</tspan></text>
@@ -73,7 +73,7 @@
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_116"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_116" result="shape"/>
 </filter>
-<filter id="filter1_d_1_116" x="252.512" y="310.4" width="398.2" height="144.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter1_d_1_116" x="252.4" y="310.4" width="398.2" height="205.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_1_116"/>

@@ -1,0 +1,70 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Home">
+<rect id="BG" width="1200" height="630" fill="#FAFAFA"/>
+<path id="Union" d="M527.49 158H943.112V312.545H719.734C686.596 312.545 659.734 339.408 659.734 372.545V516H451.923H244.112V303.455H467.49C500.627 303.455 527.49 276.592 527.49 243.455V158Z" fill="#EFEFEF"/>
+<g id="PillDate" filter="url(#filter0_d_10_3)">
+<rect width="354" height="99" rx="40" transform="matrix(-1 0 0 1 912.112 186)" fill="white"/>
+</g>
+<g id="PillPost" filter="url(#filter1_d_10_3)">
+<rect width="353" height="160" rx="40" transform="matrix(-1 0 0 1 628 331)" fill="white"/>
+</g>
+<g id="Group 2">
+<path id="Vector 1" d="M998 312H720C686.863 312 660 338.863 660 372V516" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 2" d="M213.283 302.429H467.485C500.622 302.429 527.485 275.566 527.485 242.429V133.082" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 3" d="M987.591 158.274H942.455V311.526H1043.22" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 6" d="M192.73 302H245V516H158" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 4" d="M942.455 102.874V158.274H527.485V75" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 5" d="M660 580V516H245V543.133" stroke="#E6E6E6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="Frame 2">
+<text id="David Adediji" fill="#A4A2A2" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="32" font-weight="500" letter-spacing="0em"><tspan x="634" y="236.136">David Adediji</tspan></text>
+<text id="Software Engineer" fill="#A4A2A2" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="634" y="261.318">Software Engineer</tspan></text>
+</g>
+<g id="Frame 1">
+<text id="adediiji.uk" fill="black" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="22" font-weight="500" letter-spacing="0em"><tspan x="376" y="419">adediiji.uk</tspan></text>
+<g id="3DIcon">
+<g id="Frame" clip-path="url(#clip0_10_3)">
+<path id="Vector" d="M494.5 421.733L490.667 419.625V414.833" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M490.667 407.167V402.375L494.5 400.267" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M502.167 395.858L506 393.75L509.833 395.858" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M517.5 400.267L521.333 402.375V407.167" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M521.333 414.833V419.625L517.5 421.772" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_6" d="M509.833 426.142L506 428.25L502.167 426.142" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_7" d="M506 411L509.833 408.892" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_8" d="M517.5 404.483L521.333 402.375" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_9" d="M506 411V415.792" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_10" d="M506 423.458V428.25" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_11" d="M506 411L502.167 408.853" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_12" d="M494.5 404.483L490.667 402.375" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_10_3" x="535.512" y="165.4" width="399.2" height="144.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_10_3"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="10.3"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_10_3"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_10_3" result="shape"/>
+</filter>
+<filter id="filter1_d_10_3" x="252.4" y="310.4" width="398.2" height="205.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_10_3"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="10.3"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_10_3"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_10_3" result="shape"/>
+</filter>
+<clipPath id="clip0_10_3">
+<rect width="46" height="46" fill="white" transform="translate(483 388)"/>
+</clipPath>
+</defs>
+</svg>

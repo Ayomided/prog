@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"io/fs"
 	"net/http"
 	"strings"
@@ -39,8 +38,6 @@ func OGImageHandler(sl SlugReader, posts fs.FS) http.HandlerFunc {
 			http.Error(w, "Failed to generate SVG", http.StatusInternalServerError)
 			return
 		}
-
-		fmt.Println(svgContent)
 
 		w.Header().Set("Content-Type", "image/svg+xml")
 		w.Write([]byte(svgContent))

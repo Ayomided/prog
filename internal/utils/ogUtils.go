@@ -12,6 +12,7 @@ type OG struct {
 	Title       string
 	Image       string
 	Url         string
+	RelativeUrl string
 	Description string
 	Type        string
 	SiteName    string
@@ -35,13 +36,12 @@ func NewMetaOg(title, image, url, description, ogType, siteName string) (*OG, er
 	if url == "" {
 		return nil, fmt.Errorf("Url is required")
 	}
-	if image == "" {
-		return nil, fmt.Errorf("Image is required")
-	}
+	slug := url[strings.LastIndex(url, "/")+1:]
 	return &OG{
 		Title:       title,
 		Image:       image,
 		Url:         url,
+		RelativeUrl: slug,
 		Description: description,
 		Type:        ogType,
 		SiteName:    siteName,
@@ -49,15 +49,27 @@ func NewMetaOg(title, image, url, description, ogType, siteName string) (*OG, er
 }
 
 func (og *OG) GenerateMetaOg() ([]byte, error) {
-	tmpl := `
+	var tmpl string
+	if og.Image != "" {
+		tmpl = `
 	<meta property="og:title" content="{{.Title}}">
-	<meta property="og:image" content="{{.Image}}">
 	<meta property="og:url" content="{{.Url}}">
-	<meta property="og:image" content="/static/og-images/{{ .Url }}.png" />
+	<meta property="og:image" content="{{ .Image }}" />
 	<meta property="og:description" content="{{.Description}}">
 	<meta property="og:type" content="{{.Type}}">
 	<meta property="og:site_name" content="{{.SiteName}}">
 	`
+	} else {
+		tmpl = `
+	<meta property="og:title" content="{{.Title}}">
+	<meta property="og:url" content="{{.Url}}">
+	<meta property="og:image" content="/static/og-images/{{ .RelativeUrl }}.png" />
+	<meta property="og:description" content="{{.Description}}">
+	<meta property="og:type" content="{{.Type}}">
+	<meta property="og:site_name" content="{{.SiteName}}">
+	`
+	}
+
 	t, err := template.New("og").Parse(tmpl)
 	if err != nil {
 		return nil, err
@@ -72,18 +84,59 @@ func (og *OG) GenerateMetaOg() ([]byte, error) {
 	return buf.Bytes(), nil
 }
 
+func splitTextIntoLines(title string, maxLineLength int) []string {
+	var lines []string
+	words := strings.Fields(title)
+	currentLine := ""
+
+	for _, word := range words {
+		if len(currentLine)+len(word)+1 > maxLineLength { // +1 for space
+			lines = append(lines, currentLine)
+			currentLine = word // Start a new line with the current word
+		} else {
+			if currentLine != "" {
+				currentLine += " "
+			}
+			currentLine += word
+		}
+	}
+
+	if currentLine != "" {
+		lines = append(lines, currentLine) // Add the last line
+	}
+
+	return lines
+}
+
 func GenerateOGImage(title, description, date string) (string, error) {
 	baseSVG := getBaseSVG()
-	if len(title) > 15 {
-		title = title[:12] + "..."
+	if len(title) > 50 {
+		title = title[:47] + "..."
 	}
 	if len(date) > 10 {
 		date = date[:10]
 	}
-	if len(description) > 20 {
-		description = description[:17] + "..."
+	if len(description) > 120 {
+		description = description[:117] + "..."
 	}
 
-	svgContent := strings.TrimSpace(fmt.Sprintf(baseSVG, title, description, date))
+	titleLines := splitTextIntoLines(title, 25)
+	descriptionLines := splitTextIntoLines(description, 20)
+
+	var titleSVG string
+	var descriptionSVG string
+
+	yOffset := 379.409
+	for _, line := range titleLines {
+		titleSVG += fmt.Sprintf(`<tspan x="309" y="%.3f">%s</tspan>`, yOffset, line)
+		yOffset += 28.0
+	}
+	y2Offset := 368.227
+	for _, line := range descriptionLines {
+		descriptionSVG += fmt.Sprintf(`<tspan x="707" y="%.3f">%s</tspan>`, y2Offset, line)
+		y2Offset += 36.0
+	}
+
+	svgContent := strings.TrimSpace(fmt.Sprintf(baseSVG, titleSVG, descriptionSVG, date))
 	return svgContent, nil
 }

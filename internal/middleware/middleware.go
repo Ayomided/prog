@@ -12,8 +12,10 @@ type wrappedWriter struct {
 }
 
 func (w *wrappedWriter) WriteHeader(statusCode int) {
-	w.ResponseWriter.WriteHeader(statusCode)
-	w.statusCode = statusCode
+	if w.statusCode == 0 { // If statusCode hasn't been set yet
+		w.ResponseWriter.WriteHeader(statusCode)
+		w.statusCode = statusCode
+	}
 }
 
 func Logging(next http.Handler) http.Handler {

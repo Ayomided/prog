@@ -84,12 +84,17 @@ func PostHandler(sl SlugReader, posts, templatesFS fs.FS) http.HandlerFunc {
 			return
 		}
 		uri := getFullURL(r)
-		og, err := utils.NewMetaOg(post.Title, "example.com/image.png", uri, post.Description, "website", "Pika Pika")
+		og, err := utils.NewMetaOg(post.Title, "", uri, post.Description, "article", "David Adediji")
+		if err != nil {
+			http.Error(w, "Error creating open graph tags", http.StatusInternalServerError)
+			return
+		}
+
+		metaTags, err := og.GenerateMetaOg()
 		if err != nil {
 			http.Error(w, "Error generating Open Graph tags", http.StatusInternalServerError)
 			return
 		}
-		metaTags, _ := og.GenerateMetaOg()
 		post.OGMeta = template.HTML(metaTags)
 
 		err = tpl.Execute(w, post)

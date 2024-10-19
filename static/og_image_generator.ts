@@ -49,8 +49,6 @@ async function pregenerateOGImages(
 			// const svgContent = decoder.decode(unintContent);
 			const svgContent = await fetchSVG(outPathName);
 
-			console.log(svgContent);
-
 			const outputPath = join(outputDir, `${outPathName}.png`);
 			await Deno.mkdir(dirname(outputPath), { recursive: true });
 
